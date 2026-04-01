@@ -12,6 +12,7 @@ wss.on('connection', (ws) => {
     gameState.connections.push(ws);
 
     // Send initial game state
+    // Display (graphical interface) in the client 
     ws.send(JSON.stringify({ type: 'GAME_STATE', data: gameState }));
 
     ws.on('message', (message) => {
