@@ -1,7 +1,7 @@
-import { getRandomNumber } from '../utils/rng.js';
+import { gameState } from '../repository/gameStateRepository.js';
 
 export function handleSpin() {
-    const result = getRandomNumber(0, 36);
+    const result = Math.floor(Math.random() * 37);
+    gameState.rngResult = result;
     console.log('Spin result:', result);
-    return result;
 }

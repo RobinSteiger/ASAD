@@ -1,19 +1,17 @@
-import { gameState } from '../repository/gameState.js';
+import { gameState } from '../repository/gameStateRepository.js';
 
-export function handlePayout(result) {
-    // Pour chaque mise, calculer le payout et mettre à jour balance
-    gameState.bets.forEach(bet => {
-        const userId = bet.userId;
-        if (!gameState.users[userId]) gameState.users[userId] = 0;
+export function handlePayout() {
+    if (gameState.rngResult === null) return;
 
-        // Exemple simple: pari sur un numéro exact
-        if (bet.number === result) {
-            gameState.users[userId] += bet.amount * 35;
+    gameState.tableState.forEach(bet => {
+        if (bet.number === gameState.rngResult) {
+            // 35x payout roulette straight
+            gameState.users[bet.userId] += bet.amount * 35;
         } else {
-            gameState.users[userId] -= bet.amount;
+            gameState.users[bet.userId] -= bet.amount;
         }
     });
 
-    // Reset bets
-    gameState.bets = [];
+    // Reset bets after spin
+    gameState.tableState = [];
 }
