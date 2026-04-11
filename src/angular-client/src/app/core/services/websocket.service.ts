@@ -1,88 +1,118 @@
-import {computed, inject, Injectable, signal} from '@angular/core';
-import {GameState, WsMessageIn, WsMessageOut} from '../models/game-state.model';
+import {inject, Injectable} from '@angular/core';
+import {Bet, GameState, SpinResponse} from '../models/game-state.model';
 import {Router} from '@angular/router';
+import {GameStore} from '../store/game.store';
+import {io, Socket} from 'socket.io-client';
+import {GAME_EVENTS} from '../../shared/game.events';
+import {RegistrationResponse} from '../models/game-response.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WebsocketService {
+  private readonly store = inject(GameStore);
+  private router = inject(Router);
+  private socket!: Socket;
+  private timerRef: any = null;
 
-  // ---------| State |---------
-  readonly userId = signal<string>('');
-  readonly timer= signal<number>(10);
-  readonly gameState = signal<GameState>({
-    tableState: [],
-    rngResult: null,
-    users: {},
-    connections: []
-  });
+  connect(name: string | null, amount: number | null): void {
+    if (!name || amount === null || amount < 1000) {
+      console.error('❌ [WebsocketService] Connection rejected: Name missing or amount < 1000');
+      return;
+    }
 
+    if (this.socket?.connected) return;
 
-  // ---------|  Computed from gameState |---------
- readonly tableState = computed(() => this.gameState().tableState);
- readonly rngResult = computed(() => this.gameState().rngResult);
- readonly balance = computed(() => this.gameState().users[this.userId()] ?? 100);
- readonly myBet = computed(() =>
-   this.tableState().find(b => b.userId === this.userId()) ?? null);
- readonly betsOpen = computed(() => this.rngResult() === null);
+    this.socket = io('http://localhost:3000');
 
-  private ws!: WebSocket;
-  private timerRef!: ReturnType<typeof setInterval>;
+    // --- HANDLERS ---
 
-  private router = inject(Router)
-
-// ---------|  Connexion |---------
-  connect(userId: string): void {
-    this.userId.set(userId);
-    this.ws = new WebSocket('ws://localhost:8080');
-
-    this.ws.onopen = () => {
-      this.send({ type: 'GET_GAME_STATE' });
-      this.startLocalTimer();
-    };
-
-    this.ws.onmessage = (event) => {
-      const msg: WsMessageIn = JSON.parse(event.data);
-      if (msg.type === 'GAME_STATE') {
-        this.gameState.set(msg.data);
-        // Reset timer local à chaque nouveau spin détecté
-        if (msg.data.rngResult !== null) this.timer.set(10);
-      }
-    };
-
-    this.ws.onclose = () => clearInterval(this.timerRef);
-
-    this.router.navigate(['/game']);
-  }
-
-
-
-
-  // ---------|  Submitting a bet |---------
-  submitBet(number: number, amount: number): void {
-    if (!this.betsOpen()) return;
-    this.send({
-      type: 'POST_BET',
-      data: { userId: this.userId(), number, amount },
+    this.socket.on('connect_error', (error) => {
+      console.error('❌ [WebsocketService] Connection Error:', error.message);
+      this.stopTimer();
     });
+
+    this.socket.on('disconnect', (reason) => {
+      console.warn('🔌 [WebsocketService] Disconnected:', reason);
+      this.stopTimer();
+      if (reason === 'io server disconnect' || reason === 'transport close') {
+        this.router.navigate(['/']);
+      }
+    });
+
+    this.socket.on('connect', () => {
+      console.log('✅ [WebsocketService] Connected to NestJS');
+
+      const payload = { name: name.trim(), amount };
+
+      this.socket.emit(GAME_EVENTS.REGISTER, payload, (response: RegistrationResponse) => {
+        if (response.status === 'success' && response.user) {
+          this.store.setUserId(response.user.id);
+          this.router.navigate(['/game']);
+        } else {
+          this.socket.disconnect();
+        }
+      });
+    });
+
+    // Listen for state updates from NestJS loop
+    this.socket.on(GAME_EVENTS.STATE_UPDATE, (data: GameState) => {
+      this.store.updateGameState(data);
+    });
+
+    // Listen for final result (Spin)
+    this.socket.on(GAME_EVENTS.RESULT, (data: any) => {
+      this.store.setResult(data);
+    });
+
+    this.startLocalTimer();
   }
 
-  // ---------|  Timer |---------
+  /**
+   * PLACE BET
+   * Just send the "click" to the server.
+   * The server will handle the increment (+=) and balance check.
+   */
+  placeBet(number: number, amount: number): void {
+    const userId = this.store.userId();
+
+    if (!userId || !this.store.isBettingOpen()) {
+      console.warn('🚫 Cannot place bet: Missing ID or betting closed');
+      return;
+    }
+
+    // Send to NestJS
+    this.socket.emit(GAME_EVENTS.PLACE_BET, {
+      userId: userId,
+      number: number,
+      amount: amount
+    });
+
+    console.log(`📤 [WebsocketService] Bet request sent: ${amount} on ${number}`);
+  }
+
   private startLocalTimer(): void {
-    clearInterval(this.timerRef);
-    this.timer.set(10);
+    this.stopTimer();
     this.timerRef = setInterval(() => {
-      this.timer.update(t => (t > 0 ? t - 1 : 10));
+      const currentTimer = this.store.timer();
+      if (this.store.isBettingOpen() && currentTimer > 0) {
+        this.store.updateTimer(currentTimer - 1);
+      }
     }, 1000);
   }
 
-
-  private send(msg: WsMessageOut): void {
-    if (this.ws.readyState === WebSocket.OPEN) {
-      this.ws.send(JSON.stringify(msg));
+  private stopTimer(): void {
+    if (this.timerRef) {
+      clearInterval(this.timerRef);
+      this.timerRef = null;
     }
   }
 
-
+  disconnect(): void {
+    this.stopTimer();
+    this.socket?.disconnect();
+  }
 
 }
+
+

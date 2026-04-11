@@ -1,95 +1,87 @@
-import {Component, inject} from '@angular/core';
-import {WebsocketService} from '../../../core/services/websocket.service';
-const RED_NUMBERS = [1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36];
+import {Component, computed, inject} from '@angular/core';
+import {GameStore} from '../../../core/store/game.store';
+
 @Component({
   selector: 'app-result',
   imports: [],
   template: `
-   <!-- <div class="bg-zinc-800 rounded-2xl p-6 flex flex-col items-center gap-3
-            border border-yellow-500/30">
+    <div class="flex flex-col items-center justify-center text-center p-6">
 
-      <p class="text-zinc-400 text-sm">Winning result</p>
-
-      <div [class]="resultClass()"
-           class="w-20 h-20 rounded-full flex items-center justify-center
-              text-3xl font-bold border-4 animate-pulse">
-        {{ ws.rngResult() }}
+      <div class="relative mb-8">
+        <div class="w-48 h-48 rounded-full border-8 border-yellow-500/30 flex items-center justify-center animate-pulse">
+          <div [class]="resultColor"
+               class="w-40 h-40 rounded-full flex items-center justify-center text-7xl font-black shadow-2xl border-4 border-white/20">
+            {{ store.rngResult() }}
+          </div>
+        </div>
+        <div class="absolute -top-4 -left-4 w-4 h-4 bg-yellow-500 rounded-full animate-ping"></div>
+        <div class="absolute -bottom-4 -right-4 w-4 h-4 bg-yellow-500 rounded-full animate-ping"></div>
       </div>
 
-      <p class="text-zinc-300 text-sm">{{ colorLabel() }}</p>
-
-      @if (ws.myBet(); as bet) {
-        @if (bet.number === ws.rngResult()) {
-          <p class="text-green-400 font-bold text-lg">
-            🎉 You won! + {{ bet.amount * 35 }} CHF
-          </p>
-        } @else {
-          <p class="text-red-400 font-semibold">
-            😔 You lost − {{ bet.amount }} CHF
-          </p>
-        }
+      @if (isWinner()) {
+        <h2 class="text-5xl font-black text-yellow-500 mb-2 drop-shadow-lg italic">
+          BIG WIN!
+        </h2>
+        <p class="text-xl text-white font-bold uppercase tracking-widest">
+          You won <span class="text-green-400">+{{ winAmount() }} CHF</span>
+        </p>
       } @else {
-        <p class="text-zinc-500 text-sm">You did not place a bet this round.</p>
+        <h2 class="text-5xl font-black text-zinc-500 mb-2 italic">
+          NO LUCK...
+        </h2>
+        <p class="text-lg text-zinc-400 uppercase tracking-widest">
+          Better luck next time
+        </p>
       }
 
-      <p class="text-zinc-400 text-sm">
-        New balance:
-        <span class="text-white font-bold">{{ ws.balance() }} CHF</span>
-      </p>
-
-    </div>-->
-   <div class="bg-zinc-800 rounded-xl px-4 py-2 flex items-center
-                gap-4 border border-yellow-500/30 flex-wrap justify-center">
-
-     <div class="flex items-center gap-2">
-       <span class="text-zinc-400 text-xs">Résultat :</span>
-       <div [class]="resultClass()"
-            class="w-9 h-9 rounded-full flex items-center justify-center
-                    text-sm font-bold border-2">
-         {{ ws.rngResult() }}
-       </div>
-       <span class="text-zinc-300 text-xs">{{ colorLabel() }}</span>
-     </div>
-
-     @if (ws.myBet(); as bet) {
-       @if (bet.number === ws.rngResult()) {
-         <p class="text-green-400 font-bold text-sm">
-           🎉 +{{ bet.amount * 35 }} CHF
-         </p>
-       } @else {
-         <p class="text-red-400 font-semibold text-sm">
-           😔 −{{ bet.amount }} CHF
-         </p>
-       }
-     } @else {
-       <p class="text-zinc-500 text-xs">Pas de mise ce tour.</p>
-     }
-
-     <span class="text-zinc-400 text-xs">
-        Solde : <strong class="text-white">{{ ws.balance() }} CHF</strong>
-      </span>
-
-   </div>
+      <div class="mt-10 w-full max-w-md bg-white/5 backdrop-blur-sm rounded-3xl p-6 border border-white/10">
+        <h3 class="text-zinc-500 text-[10px] font-black uppercase tracking-[0.3em] mb-4">Round Winners</h3>
+        <div class="flex flex-col gap-2">
+          @for (winner of winners(); track winner.id) {
+            <div class="flex justify-between items-center bg-zinc-800/50 p-3 rounded-xl border border-white/5">
+              <span class="font-bold text-sm">{{ winner.name }}</span>
+              <span class="text-green-400 font-black text-sm">+{{ winner.lastWin }} CHF</span>
+            </div>
+          } @empty {
+            <p class="text-zinc-600 text-xs italic">No winners this round</p>
+          }
+        </div>
+      </div>
+    </div>
   `,
   styles: ``,
 })
 export class ResultComponent {
-  ws = inject(WebsocketService);
+  readonly store = inject(GameStore);
 
-  resultClass(): string {
-    const n = this.ws.rngResult();
-    if (n === null) return '';
-    if (n === 0)   return 'border-green-500 text-green-300';
-    if (RED_NUMBERS.includes(n)) return 'border-red-500 text-red-300';
-    return 'border-zinc-400 text-zinc-100';
+  // Determine the color of the winning number
+  get resultColor(): string {
+    const res = this.store.rngResult();
+    if (res === 0) return 'bg-green-600';
+    const redNumbers = [1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36];
+    return redNumbers.includes(res!) ? 'bg-red-600' : 'bg-zinc-900';
   }
 
-  colorLabel(): string {
-    const n = this.ws.rngResult();
-    if (n === null) return '';
-    if (n === 0)   return 'Vert';
-    if (RED_NUMBERS.includes(n)) return 'Rouge';
-    return 'Noir';
-  }
+  // Logic to check if the current user won
+  isWinner = computed(() => {
+    const userId = this.store.userId();
+    const result = this.store.rngResult();
+    // Check if any bet for this user matches the result
+    return this.store.tableState().some(bet => bet.userId === userId && bet.number === result);
+  });
 
+  // Calculate potential win (simplified 35:1)
+  winAmount = computed(() => {
+    const userId = this.store.userId();
+    const result = this.store.rngResult();
+    const winningBet = this.store.tableState().find(bet => bet.userId === userId && bet.number === result);
+    return winningBet ? winningBet.amount * 35 : 0;
+  });
+
+  // Get other winners from the global users state
+  winners = computed(() => {
+    return Object.values(this.store.users())
+      .filter(user => (user as any).lastWin > 0) // Backend should provide a lastWin property
+      .sort((a, b) => (b as any).lastWin - (a as any).lastWin);
+  });
 }

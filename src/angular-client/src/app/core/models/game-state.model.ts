@@ -1,3 +1,10 @@
+export interface User {
+  id: string;
+  name: string;
+  balance: number;
+  lastWin?: number;
+}
+
 export interface Bet {
   userId: string;
   number: number;
@@ -5,16 +12,15 @@ export interface Bet {
 }
 
 export interface GameState {
-  tableState:  Bet[];
-  rngResult:   number | null;
-  users:       Record<string, number>;
-  connections: unknown[];
+  users: Record<string, User>;
+  tableState: Bet[];
+  isBettingOpen: boolean;
+  rngResult: number | null;
 }
 
-export type WsMessageIn =
-  | { type: 'GAME_STATE';    data: GameState }
-  | { type: 'BET_CONFIRMED'; data: Bet       };
-
-export type WsMessageOut =
-  | { type: 'POST_BET';      data: Bet }
-  | { type: 'GET_GAME_STATE'           };
+export interface SpinResponse {
+  status: 'success' | 'error';
+  winningNumber: number;
+  winners: User[];
+  newState: GameState;
+}
