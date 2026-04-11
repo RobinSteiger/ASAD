@@ -1,43 +1,40 @@
 import {Component, inject} from '@angular/core';
-import {WebsocketService} from '../../../core/services/websocket.service';
+import {GameStore} from '../../../core/store/game.store';
 
 @Component({
   selector: 'app-timer',
   imports: [],
   template: `
-   <!-- <div class="flex items-center justify-center gap-3">
-      <div
-        [class]="timerClass()"
-        class="w-16 h-16 rounded-full flex items-center justify-center
-               text-2xl font-bold border-4 transition-colors">
-        {{ ws.timer() }}
+    <div class="flex items-center gap-3 bg-zinc-800/50 px-4 py-1.5 rounded-full border border-zinc-700">
+      <div [class]="timerClass()"
+           class="w-8 h-8 rounded-full flex items-center justify-center text-xs font-black border-2 transition-all duration-300">
+        {{ store.timer() }}
       </div>
-      <span class="text-zinc-400 text-sm">
-        {{ ws.betsOpen() ? 'seconds to place a bet' : 'Spinning......' }}
+
+      <span class="text-[10px] uppercase tracking-wider font-bold w-20">
+        {{ store.isBettingOpen() ? 'Place Bets' : 'Spinning' }}
       </span>
-    </div>-->
-   <div class="flex items-center gap-1.5">
-     <div [class]="timerClass()"
-          class="w-9 h-9 rounded-full flex items-center justify-center
-                  text-sm font-bold border-2 transition-colors shrink-0">
-       {{ ws.timer() }}
-     </div>
-     <span class="text-zinc-400 text-xs hidden sm:block">
-        {{ ws.betsOpen() ? 'sec restantes' : 'Tirage...' }}
-      </span>
-   </div>
+    </div>
   `,
   styles: ``,
 })
 export class TimerComponent {
 
-  ws = inject(WebsocketService);
+  readonly store = inject(GameStore);
+
 
   timerClass(): string {
-    const t = this.ws.timer();
-    if (t <= 3)  return 'border-red-500 text-red-400';
-    if (t <= 6)  return 'border-yellow-500 text-yellow-400';
-    return 'border-green-500 text-green-400';
+    const t = this.store.timer();
+    if (!this.store.isBettingOpen()) {
+      return 'border-zinc-500 text-zinc-500 opacity-50';
+    }
+    if (t <= 3) {
+      return 'border-red-500 text-red-500 animate-pulse shadow-[0_0_12px_rgba(239,68,68,0.6)]';
+    }
+    if (t <= 6) {
+      return 'border-orange-500 text-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.4)]';
+    }
+    return 'border-green-500 text-green-500 shadow-[0_0_10px_rgba(34,197,94,0.3)]';
   }
 
 }

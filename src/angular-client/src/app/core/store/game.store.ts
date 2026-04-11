@@ -1,53 +1,60 @@
-
+import { signalStore, withState, withMethods, withComputed, patchState } from '@ngrx/signals';
 import { computed } from '@angular/core';
-import { GameState } from '../models/game-state.model';
+import { GameState, Bet, User } from '../models/game-state.model';
 
-type GameStoreState = {
-  gameState: GameState;
-  userId: string;
-  timer: number;
-  isLoading: boolean;
-};
-
-const initialState: GameStoreState = {
-  gameState: {
-    tableState: [],
-    rngResult: null,
-    users: {},
-    connections: []
-  },
-  userId: '',
-  timer: 10,
-  isLoading: false
+// Initial state matching the Backend's default values
+const initialState: GameState & { userId: string | null; timer: number } = {
+  users: {},
+  tableState: [],
+  isBettingOpen: true,
+  rngResult: null,
+  userId: null,
+  timer: 15,
 };
 
 export const GameStore = signalStore(
   { providedIn: 'root' },
   withState(initialState),
 
+  // --- COMPUTED: Derived data from the Backend state ---
   withComputed((store) => ({
     userBalance: computed(() => {
-      const state = store.gameState();
-      return state.users[store.userId()] ?? 100;
+      const id = store.userId();
+      const allUsers = store.users();
+      return (id && allUsers[id]) ? allUsers[id].balance : 0;
     }),
-    isBettingOpen: computed(() => store.gameState().rngResult === null),
-    myCurrentBet: computed(() =>
-      store.gameState().tableState.find(b => b.userId === store.userId()) ?? null
-    )
+
+    userName: computed(() => {
+      const id = store.userId();
+      const allUsers = store.users();
+      return (id && allUsers[id]) ? allUsers[id].name : 'Guest';
+    }),
+
+    // Check if the current user has already placed a bet this round
+    hasPlacedBet: computed(() => {
+      const id = store.userId();
+      return store.tableState().some(bet => bet.userId === id);
+    })
   })),
 
+  // --- METHODS: How we update the state ---
   withMethods((store) => ({
-    setUserId(id: string): void {
+    // Update the entire state when receiving 'STATE_UPDATE' from NestJS
+    updateGameState(newState: GameState) {
+      patchState(store, {
+        users: newState.users,
+        tableState: newState.tableState,
+        isBettingOpen: newState.isBettingOpen,
+        rngResult: newState.rngResult
+      });
+    },
+
+    setUserId(id: string) {
       patchState(store, { userId: id });
     },
-    updateGameState(newState: GameState): void {
-      patchState(store, { gameState: newState });
-    },
-    updateTimer(value: number): void {
-      patchState(store, { timer: value });
-    },
-    setLoading(loading: boolean): void {
-      patchState(store, { isLoading: loading });
+
+    updateTimer(timeLeft: number) {
+      patchState(store, { timer: timeLeft });
     }
-  })) // <--- Pas de virgule ici car c'est le dernier bloc
-); // <--- Parenthèse de fermeture du signalStore
+  }))
+);
