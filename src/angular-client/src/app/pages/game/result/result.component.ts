@@ -1,5 +1,6 @@
 import {Component, computed, inject} from '@angular/core';
 import {GameStore} from '../../../core/store/game.store';
+import {User} from '../../../core/models/game-state.model';
 
 @Component({
   selector: 'app-result',
@@ -52,9 +53,11 @@ import {GameStore} from '../../../core/store/game.store';
   styles: ``,
 })
 export class ResultComponent {
-  readonly store = inject(GameStore);
 
-  // Determine the color of the winning number
+  readonly store = inject(GameStore); // Global data source
+
+  /** * Get CSS class for the winning number color
+   */
   get resultColor(): string {
     const res = this.store.rngResult();
     if (res === 0) return 'bg-green-600';
@@ -62,26 +65,30 @@ export class ResultComponent {
     return redNumbers.includes(res!) ? 'bg-red-600' : 'bg-zinc-900';
   }
 
-  // Logic to check if the current user won
+  /** * Logic: Check if the local player won the round
+   */
   isWinner = computed(() => {
     const userId = this.store.userId();
     const result = this.store.rngResult();
-    // Check if any bet for this user matches the result
+    // Check if my bet matches the winning number
     return this.store.tableState().some(bet => bet.userId === userId && bet.number === result);
   });
 
-  // Calculate potential win (simplified 35:1)
+  /** * Logic: Calculate the money won (36x for single number)
+   */
   winAmount = computed(() => {
     const userId = this.store.userId();
     const result = this.store.rngResult();
     const winningBet = this.store.tableState().find(bet => bet.userId === userId && bet.number === result);
-    return winningBet ? winningBet.amount * 35 : 0;
+    // Multiply bet amount by 36
+    return winningBet ? winningBet.amount * 36 : 0;
   });
 
-  // Get other winners from the global users state
-  winners = computed(() => {
+  /** * Logic: Filter all users to find winners
+   */
+  winners = computed<User[]>(() => {
     return Object.values(this.store.users())
-      .filter(user => (user as any).lastWin > 0) // Backend should provide a lastWin property
-      .sort((a, b) => (b as any).lastWin - (a as any).lastWin);
+      .filter((user: User) => (user.lastWin ?? 0) > 0)
+      .sort((a: User, b: User) => (b.lastWin ?? 0) - (a.lastWin ?? 0));
   });
 }

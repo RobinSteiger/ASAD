@@ -10,106 +10,87 @@ import {RegistrationResponse} from '../models/game-response.model';
   providedIn: 'root',
 })
 export class WebsocketService {
-  private readonly store = inject(GameStore);
-  private router = inject(Router);
-  private socket!: Socket;
-  private timerRef: any = null;
 
+  private readonly store = inject(GameStore); // Data storage
+  private readonly router = inject(Router);   // For navigation
+
+  // The socket instance with strict typing
+  private socket!: Socket;
+
+  /**
+   * Connect to the server with name and money
+   */
   connect(name: string | null, amount: number | null): void {
-    if (!name || amount === null || amount < 1000) {
-      console.error('❌ [WebsocketService] Connection rejected: Name missing or amount < 1000');
+    if (!name || amount === null) {
+      console.error('Missing data for connection');
       return;
     }
 
-    if (this.socket?.connected) return;
-
+    // Connect to NestJS server on port 3000
     this.socket = io('http://localhost:3000');
 
-    // --- HANDLERS ---
-
-    this.socket.on('connect_error', (error) => {
-      console.error('❌ [WebsocketService] Connection Error:', error.message);
-      this.stopTimer();
-    });
-
-    this.socket.on('disconnect', (reason) => {
-      console.warn('🔌 [WebsocketService] Disconnected:', reason);
-      this.stopTimer();
-      if (reason === 'io server disconnect' || reason === 'transport close') {
-        this.router.navigate(['/']);
-      }
-    });
-
+    // When connection is ready
     this.socket.on('connect', () => {
-      console.log('✅ [WebsocketService] Connected to NestJS');
-
       const payload = { name: name.trim(), amount };
 
+      // Send registration event to server
       this.socket.emit(GAME_EVENTS.REGISTER, payload, (response: RegistrationResponse) => {
         if (response.status === 'success' && response.user) {
-          this.store.setUserId(response.user.id);
-          this.router.navigate(['/game']);
-        } else {
-          this.socket.disconnect();
+          this.store.setUserId(response.user.id); // Save my ID
+          this.router.navigate(['/game']);        // Go to game page
         }
       });
     });
 
-    // Listen for state updates from NestJS loop
+    /**
+     * LISTEN: State update from server
+     * Server sends this every second
+     */
     this.socket.on(GAME_EVENTS.STATE_UPDATE, (data: GameState) => {
+      // Push the new server data into the Store
       this.store.updateGameState(data);
     });
 
-    // Listen for final result (Spin)
-    this.socket.on(GAME_EVENTS.RESULT, (data: any) => {
-      this.store.setResult(data);
+    /**
+     * LISTEN: Final spin result
+     * Server sends this when the wheel stops
+     */
+    this.socket.on(GAME_EVENTS.RESULT, (data: SpinResponse) => {
+      console.log('Round finished. Winner number is:', data.winningNumber);
     });
 
-    this.startLocalTimer();
+    // Handle disconnection
+    this.socket.on('disconnect', () => {
+      this.router.navigate(['/']);
+    });
   }
 
   /**
-   * PLACE BET
-   * Just send the "click" to the server.
-   * The server will handle the increment (+=) and balance check.
+   * Send a bet to the server
    */
   placeBet(number: number, amount: number): void {
     const userId = this.store.userId();
 
+    // Check if I can bet
     if (!userId || !this.store.isBettingOpen()) {
-      console.warn('🚫 Cannot place bet: Missing ID or betting closed');
       return;
     }
 
-    // Send to NestJS
-    this.socket.emit(GAME_EVENTS.PLACE_BET, {
+    // Prepare the bet data
+    const betPayload = {
       userId: userId,
       number: number,
       amount: amount
-    });
+    };
 
-    console.log(`📤 [WebsocketService] Bet request sent: ${amount} on ${number}`);
+    // Send the bet to the server
+    this.socket.emit(GAME_EVENTS.PLACE_BET, betPayload);
   }
 
-  private startLocalTimer(): void {
-    this.stopTimer();
-    this.timerRef = setInterval(() => {
-      const currentTimer = this.store.timer();
-      if (this.store.isBettingOpen() && currentTimer > 0) {
-        this.store.updateTimer(currentTimer - 1);
-      }
-    }, 1000);
-  }
-
-  private stopTimer(): void {
-    if (this.timerRef) {
-      clearInterval(this.timerRef);
-      this.timerRef = null;
-    }
-  }
-
+  /**
+   * Close the connection
+   */
   disconnect(): void {
-    this.stopTimer();
     this.socket?.disconnect();
   }
 

@@ -16,6 +16,7 @@ export interface GameState {
   tableState: Bet[];
   isBettingOpen: boolean;
   rngResult: number | null;
+  timeLeft: number;
 }
 
 export interface SpinResponse {
