@@ -74,41 +74,43 @@ import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
 })
 export class LobbyComponent {
 
-
   private websocketService = inject(WebsocketService);
 
-  userNameForm = new FormControl('', [
-    Validators.required,
-    Validators.minLength(3),
-    Validators.pattern(/^[a-zA-Z0-9]+$/)
-  ]);
+  /** * Form for the player name
+   * Only letters and numbers allowed
+   */
+  userNameForm = new FormControl<string>('', {
+    nonNullable: true,
+    validators: [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.pattern(/^[a-zA-Z0-9]+$/)
+    ]
+  });
 
-  // Initial budget field, minimum 10$
-  amountForm = new FormControl(1000, [
-    Validators.required,
-    Validators.min(1000)
-  ]);
+  /** * Form for the starting budget
+   * Minimum is 1000 according to Business Rules
+   */
+  amountForm = new FormControl<number>(1000, {
+    nonNullable: true,
+    validators: [
+      Validators.required,
+      Validators.min(1000)
+    ]
+  });
 
-  // lobby.component.ts
-  joinGame() {
-    // 1. Check form validity
-    if (this.userNameForm.invalid || this.amountForm.invalid) return;
-
-    const name = this.userNameForm.value!.trim();
-    const amount = Number(this.amountForm.value);
-
-    // 2. Custom Business Rule: Minimum 1000
-    if (amount < 1000) {
-      // Tu peux aussi gérer ça avec un Validator.min(1000) dans ton FormControl
-      console.error(' Minimum bet to join is 1000');
+  /** * Action when the user clicks the button
+   */
+  joinGame(): void {
+    // 1. Stop if forms are not valid
+    if (this.userNameForm.invalid || this.amountForm.invalid) {
       return;
     }
-
-    // 3. Cleanup old connection
+    const name: string = this.userNameForm.value.trim();
+    const amount: number = Number(this.amountForm.value);
+    // 2. Clean old connection before starting a new one
     this.websocketService.disconnect();
-
-    // 4. Connect
+    // 3. Connect to the WebSocket server with the data
     this.websocketService.connect(name, amount);
   }
-
 }

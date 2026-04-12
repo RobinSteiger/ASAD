@@ -12,29 +12,29 @@ import {GameStore} from '../../../core/store/game.store';
 
         <button
           (click)="placeBet(0)"
-          [disabled]="!store.isBettingOpen()"
+          [disabled]="!store.isBettingOpen() || isNumberOccupied(0)"
           class="col-span-full md:col-span-1 h-16 rounded-lg font-black text-xl transition-all
-                 bg-green-600 hover:bg-green-500 border-b-4 border-green-800
-                 disabled:opacity-50 disabled:grayscale disabled:cursor-not-allowed
-                 flex flex-col items-center justify-center relative">
+             bg-green-600 hover:bg-green-500 border-b-4 border-green-800
+             disabled:opacity-50 disabled:grayscale disabled:cursor-not-allowed
+             flex flex-col items-center justify-center relative">
           0
-          {{ getBetOnNumber(0) }}
+          <span class="text-[10px]">{{ getBetOnNumber(0) }}</span>
         </button>
 
         @for (n of numbers; track n) {
           <button
             (click)="placeBet(n)"
-            [disabled]="!store.isBettingOpen()"
+            [disabled]="!store.isBettingOpen() || isNumberOccupied(n)"
             [class]="getNumberClass(n)"
             class="h-16 rounded-lg font-bold text-lg transition-all border-b-4
-                   hover:scale-105 active:translate-y-1
-                   disabled:opacity-50 disabled:grayscale disabled:cursor-not-allowed
-                   flex flex-col items-center justify-center relative">
+               hover:scale-105 active:translate-y-1
+               disabled:opacity-50 disabled:grayscale disabled:cursor-not-allowed
+               flex flex-col items-center justify-center relative">
             {{ n }}
 
-            @if (hasBet(n)) {
-              <div class="absolute -top-2 -right-2 w-6 h-6 bg-yellow-500 text-black text-[10px]
-                          rounded-full border-2 border-white flex items-center justify-center font-black animate-bounce shadow-lg">
+            @if (getBetAmount(n) > 0) {
+              <div class="absolute -top-2 -right-2 w-7 h-7 bg-yellow-500 text-black text-[10px]
+                      rounded-full border-2 border-white flex items-center justify-center font-black animate-bounce shadow-lg">
                 {{ getBetAmount(n) }}
               </div>
             }
@@ -44,7 +44,10 @@ import {GameStore} from '../../../core/store/game.store';
 
       <div class="text-zinc-500 text-xs uppercase tracking-[0.2em] font-bold">
         @if (store.isBettingOpen()) {
-          <span class="text-green-500 animate-pulse font-black">● Place your bets (10 CHF)</span>
+          <div class="flex flex-col items-center gap-2">
+            <span class="text-green-500 animate-pulse font-black">● Place your bets (10 CHF)</span>
+            <span class="text-zinc-400 text-[10px]">Time remaining: {{ store.timeLeft() }}s</span>
+          </div>
         } @else {
           <span class="text-red-500 font-black">✖ Bets Closed - Spinning...</span>
         }
@@ -80,13 +83,22 @@ export class BoardComponent {
     return this.store.tableState().some(bet => bet.number === n && bet.userId === userId);
   }
 
-  getBetAmount(n: number): string {
-    const bet = this.store.tableState().find(b => b.number === n && b.userId === this.store.userId());
-    return bet ? `${bet.amount}` : '';
+  getBetAmount(n: number): number {
+    // We look for any bet on this number in the tableState
+    const bet = this.store.tableState().find(b => b.number === n);
+
+    // If we find a bet, return the amount, otherwise return 0
+    return bet ? bet.amount : 0;
   }
 
   getBetOnNumber(n: number): string {
     // Similar to getBetAmount but returns a small badge text
     return this.hasBet(n) ? '✓' : '';
+  }
+
+  // Check if someone else (not me) has money on this number
+  isNumberOccupied(n: number): boolean {
+    const myId = this.store.userId();
+    return this.store.tableState().some(bet => bet.number === n && bet.userId !== myId);
   }
 }
