@@ -1,0 +1,43 @@
+import {
+  MessageBody,
+  SubscribeMessage,
+  OnGatewayInit,
+  WebSocketGateway,
+  WebSocketServer,
+} from '@nestjs/websockets';
+import { Server } from 'socket.io';
+import { GameService } from './game.service';
+import { GAME_EVENTS } from './game.events';
+import { CreatePlayerDto } from '../dto/create-player.dto';
+import { PlaceBetDto } from '../dto/place-bet.dto';
+
+@WebSocketGateway({
+  cors: { origin: '*' }, // Allow Angular to connect
+})
+export class GameGateway implements OnGatewayInit {
+  @WebSocketServer() server: Server;
+
+  constructor(private readonly gameService: GameService) {}
+
+  //  Give the server to the service when the app starts
+  afterInit(server: Server) {
+    this.gameService.socketServer = server;
+    // Start the timer loop when server starts
+    this.gameService.startGameLoop();
+  }
+  // Register a new player
+  @SubscribeMessage(GAME_EVENTS.REGISTER)
+  handleRegister(@MessageBody() data: CreatePlayerDto) {
+    return this.gameService.handleRegister(data);
+  }
+  // Place a bet
+  @SubscribeMessage(GAME_EVENTS.PLACE_BET)
+  handleBet(@MessageBody() data: PlaceBetDto) {
+    return this.gameService.handleBetAction(data);
+  }
+  // Spin the wheel
+  @SubscribeMessage(GAME_EVENTS.SPIN)
+  handleSpin() {
+    return this.gameService.handleSpinAction();
+  }
+}
