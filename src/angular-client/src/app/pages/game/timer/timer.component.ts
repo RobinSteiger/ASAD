@@ -25,7 +25,7 @@ export class TimerComponent {
   readonly store = inject(GameStore);
 
   /** * Change colors based on the time remaining
-   * This is visual feedback for the player
+   *
    */
   timerClass(): string {
     // Get the time from the server via the Store
