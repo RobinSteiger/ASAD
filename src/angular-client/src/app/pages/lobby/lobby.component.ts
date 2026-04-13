@@ -12,9 +12,9 @@ import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
         <div class="absolute -top-10 -right-10 w-32 h-32 bg-green-500/10 blur-3xl"></div>
 
         <div class="flex flex-col items-center gap-3 justify-center mb-4">
-          <img src="/roulette1.png" alt="roulette" class="w-12 h-12" />
+          <img src="/roulette1.png" alt="roulette" class="w-20 h-20" />
           <h1 class="text-white text-3xl font-black tracking-tighter italic">
-            ASAD<span class="text-green-500 text-sm">CASINO</span>
+            Projet 4 : <span class="text-green-500 ">Roulette</span>
           </h1>
         </div>
 
@@ -37,7 +37,9 @@ import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
           </div>
 
           <div class="flex flex-col gap-1">
-            <label class="text-[10px] text-zinc-500 uppercase font-bold ml-1">Starting Chips ($)</label>
+            <label class="text-[10px] text-zinc-500 uppercase font-bold ml-1">
+              Starting Chips (CHF)
+            </label>
             <input
               [formControl]="amountForm"
               type="number"
@@ -48,7 +50,7 @@ import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
             @if (amountForm.invalid && amountForm.touched) {
               <p class="text-red-400 text-[10px] uppercase font-bold mt-1 ml-1">
                 @if (amountForm.errors?.['required']) { Required field }
-                @else if (amountForm.errors?.['min']) { Minimum 1000$ required }
+                @else if (amountForm.errors?.['min']) { Minimum CHF 1000 required }
               </p>
             }
           </div>
@@ -63,10 +65,6 @@ import {FormControl, ReactiveFormsModule, Validators} from '@angular/forms';
                  py-3 rounded-xl transition-all shadow-lg shadow-green-900/20">
           START PLAYING
         </button>
-
-        <p class="text-[9px] text-zinc-600 text-center uppercase tracking-widest">
-          // Ready to connect to the server
-        </p>
       </div>
     </div>
   `,
@@ -89,7 +87,7 @@ export class LobbyComponent {
   });
 
   /** * Form for the starting budget
-   * Minimum is 1000 according to Business Rules
+   * Minimum is 1000 CHF according to Business Rules
    */
   amountForm = new FormControl<number>(1000, {
     nonNullable: true,

@@ -11,8 +11,9 @@ import {RegistrationResponse} from '../models/game-response.model';
 })
 export class WebsocketService {
 
-  private readonly store = inject(GameStore); // Data storage
-  private readonly router = inject(Router);   // For navigation
+  //  Data storage injection
+  private readonly store = inject(GameStore);
+  private readonly router = inject(Router);
 
   // The socket instance with strict typing
   private socket!: Socket;
@@ -56,7 +57,8 @@ export class WebsocketService {
      * Server sends this when the wheel stops
      */
     this.socket.on(GAME_EVENTS.RESULT, (data: SpinResponse) => {
-      console.log('Round finished. Winner number is:', data.winningNumber);
+      //  We send the winners to the Store to show the Popup
+      this.store.setResult(data);
     });
 
     // Handle disconnection
@@ -93,6 +95,9 @@ export class WebsocketService {
   disconnect(): void {
     this.socket?.disconnect();
   }
+
+
+
 
 }
 
