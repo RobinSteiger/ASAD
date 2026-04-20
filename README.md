@@ -29,9 +29,9 @@ The client will start on `http://localhost:4200`.
 # TODO :
 
 Remove player when solde is None --> Fix in server, and add a view in client  
-Modify / Delete bets  
+
 Remove the choice of the solde at the beginning  
-0 must be a playable case (actually can only check it)  
+
 Add logs
 
 # Optional :
