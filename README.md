@@ -1,34 +1,52 @@
 # Multiplayer Roulette Project
 
-This is a real-time roulette game. It uses Angular for the client and NestJS for the server.
+This project a real-time roulette game. It uses Angular for the client and NestJS for the server.
 
-# Tech Stack
+## 0. Setup and launch 
+
+Follow these steps to start the application:
+
+Start the Backend (NestJS) :
+
+   ```
+   cd src/nestjs_server  
+   npm install  
+   npm run start:dev  
+   ```
+
+The server will start on `http://localhost:3000`.
+
+Start the Frontend (Angular) :
+
+   ```
+   cd ../angular-client
+   npm install
+   npm run start
+   ```
+
+The client will start on `http://localhost:4200`.
+
+# TODO :
+
+Remove player when solde is None --> Fix in server, and add a view in client  
+Modify / Delete bets  
+Remove the choice of the solde at the beginning  
+0 must be a playable case (actually can only check it)  
+Add logs
+
+# Optional :
+
+Add a list of all players and their actual solde   
+Add case red / black, even / odd  
+Add more time to let the players bet (a bit short actually)  
+
+# For the report :
+
+## 0. Tech Stack
 
 Frontend: Angular + Signals + Tailwind CSS
 
 Backend: NestJS + WebSockets
-
-# How to run the project
-
-Follow these steps to start the application:
-
-1. Start the Backend (NestJS)
-   The server handles the game logic, bets, and the timer.
-
-Bash
-cd nestjs_server
-npm install
-npm run start:dev
-The server will start on http://localhost:3000.
-
-2. Start the Frontend (Angular)
-   The web interface for the players.
-
-Bash
-cd angular-client
-npm install
-npm run start
-Open http://localhost:4200 in your browser.
 
 # Key Information
 
@@ -37,13 +55,3 @@ Why NestJS? I used NestJS because Angular Signals need a very strict and stable 
 Real-time: The game is synchronized. All players see the same countdown and the same winning number at the same time.
 
 UI/UX: I used Tailwind CSS for the design. We can work together to improve the visuals later!
-
-## Launch the server
-
-cd src/node_server
-node server.js
-
-## Launch a client
-
-cd src/node_client
-node client.js
