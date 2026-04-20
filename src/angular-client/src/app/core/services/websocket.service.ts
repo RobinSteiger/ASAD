@@ -67,38 +67,55 @@ export class WebsocketService {
     });
   }
 
-  /**
-   * Send a bet to the server
-   */
+  // ADD bet
   placeBet(number: number, amount: number): void {
     const userId = this.store.userId();
+    if (!userId || !this.store.isBettingOpen()) {
+      return;
+    }
+    this.socket.emit(GAME_EVENTS.BET_ACTION, {
+      userId,
+      number,
+      amount,
+      action: 'place',
+    });
+  }
 
-    // Check if I can bet
+  // PUT bet
+  updateBet(number: number, amount: number): void {
+    const userId = this.store.userId();
+
     if (!userId || !this.store.isBettingOpen()) {
       return;
     }
 
-    // Prepare the bet data
-    const betPayload = {
-      userId: userId,
-      number: number,
-      amount: amount
-    };
-
-    // Send the bet to the server
-    this.socket.emit(GAME_EVENTS.PLACE_BET, betPayload);
+    this.socket.emit(GAME_EVENTS.BET_ACTION, {
+      userId,
+      number,
+      amount,
+      action: 'update',
+    });
   }
 
-  /**
-   * Close the connection
-   */
+  // DELETE bet
+  deleteBet(number: number): void {
+    const userId = this.store.userId();
+
+    if (!userId || !this.store.isBettingOpen()) {
+      return;
+    }
+
+    this.socket.emit(GAME_EVENTS.BET_ACTION, {
+      userId,
+      number,
+      action: 'delete',
+    });
+  }
+
+  // Disconnection
   disconnect(): void {
     this.socket?.disconnect();
   }
-
-
-
-
 }
 
 
