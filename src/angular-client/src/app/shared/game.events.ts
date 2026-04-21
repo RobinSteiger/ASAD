@@ -1,7 +1,7 @@
 export const GAME_EVENTS = {
   // Client => Server (Inputs)
   REGISTER: 'REGISTER_PLAYER',
-  PLACE_BET: 'PLACE_BET',
+  BET_ACTION: 'BET_ACTION',
   SPIN: 'SPIN_WHEEL',
 
   // Server =>  Client (Outputs)

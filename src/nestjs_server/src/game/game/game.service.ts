@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { Bet, GameState, User } from './game.interface';
 import { CreatePlayerDto } from '../dto/create-player.dto';
 import {
@@ -6,9 +6,9 @@ import {
   RegistrationResponse,
   SpinResponse,
 } from '../models/game-response.model';
-import { PlaceBetDto } from '../dto/place-bet.dto';
 import { Server } from 'socket.io';
 import { GAME_EVENTS } from './game.events';
+import { BetActionDto } from '../dto/bet-action.dto';
 
 @Injectable()
 export class GameService {
@@ -21,12 +21,10 @@ export class GameService {
     timeLeft: 15,
   };
 
-  public socketServer: Server;
+  public socketServer!: Server;
+  private readonly logger = new Logger('GameService');
 
-  /**
-   * Start the game loop when the server is ready
-   * This is the "Heart" of the server
-   */
+  // Start the game
   startGameLoop() {
     setInterval(() => {
       if (this.state.timeLeft > 0 && this.state.isBettingOpen) {
@@ -59,18 +57,39 @@ export class GameService {
   }
 
   // Handle when a player clicks on the board
-  handleBetAction(dto: PlaceBetDto): BetResponse {
-    const isOk = this.placeBet(dto.userId, dto.number, dto.amount);
+  handleBetAction(dto: BetActionDto): BetResponse {
+    let isOk = false;
+
+    switch (dto.action) {
+      case 'place':
+        if (dto.amount === undefined) break;
+        isOk = this.placeBet(dto.userId, dto.number, dto.amount);
+        break;
+
+      case 'update':
+        if (dto.amount === undefined) break;
+        isOk = this.updateBet(dto.userId, dto.number, dto.amount);
+        break;
+
+      case 'delete':
+        isOk = this.removeBet(dto.userId, dto.number);
+        break;
+
+      default:
+        return {
+          status: 'error',
+          message: 'Invalid action',
+        };
+    }
 
     if (isOk) {
-      // Notify everyone about the new bet on the table
       this.socketServer.emit(GAME_EVENTS.STATE_UPDATE, this.getState());
       return { status: 'success' };
     }
 
     return {
       status: 'error',
-      message: 'Bet rejected (Case taken or no money)',
+      message: 'Bet action failed',
     };
   }
 
@@ -104,41 +123,31 @@ export class GameService {
   registerUser(dto: CreatePlayerDto): User | null {
     if (!dto || !dto.name) return null;
 
+    const BASIC_AMOUNT = 1000;
+
     const uniqueId = `${dto.name}_${Date.now()}`;
     const newUser: User = {
       id: uniqueId,
       name: dto.name,
-      balance: dto.amount,
+      balance: BASIC_AMOUNT,
     };
 
     this.state.users[uniqueId] = newUser;
     return newUser;
   }
 
-  // --- Inside GameService class ---
-
-  /**
-   * Handle a bet from a player
-   *  This function updates the money and the table
-   */
+  // ADD bet
   placeBet(userId: string, num: number, amount: number): boolean {
-    // 1. Get the user from our global state
     const user = this.state.users[userId];
-
-    // check money and if bets are open
     if (!user || !this.state.isBettingOpen || user.balance < amount) {
       return false;
     }
-
-    // 2. Requirement R1.2: Check if another player took this number
-    // Is another person on this number?
+    
     const isTakenByOther = this.state.tableState.find(
       (b: Bet) => b.number === num && b.userId !== userId,
     );
     if (isTakenByOther) return false;
 
-    // 3. Increment logic: Add more money to an existing bet
-    //  Search if the player already has a bet here
     const existingBetIndex = this.state.tableState.findIndex(
       (b: Bet) => b.userId === userId && b.number === num,
     );
@@ -150,18 +159,68 @@ export class GameService {
       // CREATE new bet on the table
       this.state.tableState.push({ userId, number: num, amount });
     }
-
-    // 4. Update balance: Take money from the player's wallet
     user.balance -= amount;
-
+    // Log
+    this.logger.log(
+      `PLACE_BET | user=${userId} num=${num} amount=${amount}`,
+    );
     return true;
   }
+
+  // PUT bet
+  updateBet(userId: string, num: number, newAmount: number): boolean {
+    const user = this.state.users[userId];
+    if (!user || !this.state.isBettingOpen || newAmount <= 0) {
+      return false;
+    }
+    // Find old bet
+    const betIndex = this.state.tableState.findIndex(
+      (b: Bet) => b.userId === userId && b.number === num,
+    );
+    if (betIndex === -1) return false;
+    const existingBet = this.state.tableState[betIndex];
+    // Modify amount
+    const difference = newAmount - existingBet.amount;
+
+    if (difference > 0 && user.balance < difference) {
+      return false;
+    }
+    user.balance -= difference;
+    existingBet.amount = newAmount;
+    // Log
+    this.logger.log(
+      `UPDATE_BET | user=${userId} num=${num} new=${newAmount} diff=${difference}`,
+    );
+    return true;
+  }
+
+  // DELETE bet
+  removeBet(userId: string, num: number): boolean {
+    const user = this.state.users[userId];
+    if (!user || !this.state.isBettingOpen) {
+      return false;
+    }
+    // Find bet
+    const betIndex = this.state.tableState.findIndex(
+      (b: Bet) => b.userId === userId && b.number === num,
+    );
+    if (betIndex === -1) return false;
+    const bet = this.state.tableState[betIndex];
+    // Delete it
+    user.balance += bet.amount;
+    this.state.tableState.splice(betIndex, 1);
+    // Log
+    this.logger.log(
+      `REMOVE_BET success | user=${userId} num=${num} refunded=${bet.amount}`,
+    );
+    return true;
+  }
+
 
   // Select random winner and update balances
   handleSpin() {
     this.state.rngResult = Math.floor(Math.random() * 37);
     // Win TEST
-    //  this.state.rngResult = 10;
     this.state.tableState.forEach((bet) => {
       if (bet.number === this.state.rngResult) {
         const winner = this.state.users[bet.userId];
