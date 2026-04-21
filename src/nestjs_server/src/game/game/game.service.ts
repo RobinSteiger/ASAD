@@ -18,7 +18,7 @@ export class GameService {
     tableState: [],
     users: {},
     isBettingOpen: true,
-    timeLeft: 15,
+    timeLeft: 30,
   };
 
   public socketServer!: Server;

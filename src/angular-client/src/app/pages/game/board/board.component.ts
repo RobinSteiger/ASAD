@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { WebsocketService } from '../../../core/services/websocket.service';
 import { GameStore } from '../../../core/store/game.store';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-board',
@@ -127,8 +128,11 @@ import { GameStore } from '../../../core/store/game.store';
 export class BoardComponent {
   readonly store = inject(GameStore);
   private ws = inject(WebsocketService);
+  private router = inject(Router);
+
 
   constructor() {
+    // Reset the edit/delete screen when the game end/start
     effect(() => {
       const isOpen = this.store.isBettingOpen();
       const table = this.store.tableState();
@@ -140,6 +144,18 @@ export class BoardComponent {
       // New game
       if (table.length === 0) {
         this.forceResetEditor();
+      }
+    });
+    // Redirect the user to the lobby when he has lost
+    effect(() => {
+      const isBankrupt = this.store.isBankrupt();
+      const isBettingOpen = this.store.isBettingOpen();
+      const table = this.store.tableState();
+
+      const isNewRound = isBettingOpen && table.length === 0;
+
+      if (isBankrupt && isNewRound) {
+        this.router.navigate(['/lobby']);
       }
     });
   }

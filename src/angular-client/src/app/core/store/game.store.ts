@@ -47,6 +47,16 @@ export const GameStore = signalStore(
       const id = store.userId();
       return store.tableState().some(bet => bet.userId === id);
     }),
+
+    // Check if the user solde is 0 
+    isBankrupt: computed(() => {
+      const id = store.userId();
+      const users = store.users();
+
+      if (!id || !users[id]) return false;
+
+      return users[id].balance <= 0;
+    }),
   })),
 
   // --- METHODS: How we update the central data ---
