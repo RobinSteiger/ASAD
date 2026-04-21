@@ -1,4 +1,3 @@
-
 import { GameState, User } from '../game/game.interface';
 
 export class GameResponse {
