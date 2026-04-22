@@ -53,7 +53,7 @@ import { Router } from '@angular/router';
       <div class="text-zinc-500 text-xs uppercase tracking-[0.2em] font-bold">
         @if (store.isBettingOpen()) {
           <div class="flex flex-col items-center gap-2">
-            <span class="text-green-500 animate-pulse font-black">● Place your bets (10 CHF)</span>
+            <span class="text-green-500 animate-pulse font-black">● Place your bets</span>
             <span class="text-zinc-400 text-[10px]">Time remaining: {{ store.timeLeft() }}s</span>
           </div>
         } @else {
