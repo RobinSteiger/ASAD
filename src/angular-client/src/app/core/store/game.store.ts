@@ -55,7 +55,7 @@ export const GameStore = signalStore(
 
       if (!id || !users[id]) return false;
 
-      return users[id].balance <= 0;
+      return users[id].balance < 0;
     }),
   })),
 

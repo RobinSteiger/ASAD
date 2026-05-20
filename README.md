@@ -19,7 +19,7 @@ The server will start on `http://localhost:3000`.
 Start the Frontend (Angular) :
 
    ```
-   cd ../angular-client
+   cd src/angular-client
    npm install
    npm run start
    ```

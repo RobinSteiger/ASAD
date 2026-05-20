@@ -1,4 +1,4 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
 import { Bet, GameState, User } from './game.interface';
 import { CreatePlayerDto } from '../dto/create-player.dto';
 import {
@@ -9,9 +9,11 @@ import {
 import { Server } from 'socket.io';
 import { GAME_EVENTS } from './game.events';
 import { BetActionDto } from '../dto/bet-action.dto';
+import { IUserRepository, RoundSnapshot } from './game.interface';
+import { InMemoryUserRepository } from '../repository/in_memory_user.repository';
 
 @Injectable()
-export class GameService {
+export class GameService implements OnModuleInit {
   // Main data storage for the game (The Blackboard)
   private state: GameState = {
     rngResult: null,
@@ -23,6 +25,20 @@ export class GameService {
 
   public socketServer!: Server;
   private readonly logger = new Logger('GameService');
+
+  constructor(private readonly userRepo: InMemoryUserRepository) {}
+
+  // Restart the server after a crash
+  async onModuleInit() {
+    const unresolved = await this.userRepo.getUnresolvedRound();
+    if (unresolved) {
+      this.logger.warn(
+        `Unresolved round detected (${unresolved.roundId}), replaying payouts...`,
+      );
+      await this.applyPayouts(unresolved);
+      await this.userRepo.markRoundResolved(unresolved.roundId);
+    }
+  }
 
   // Start the game
   startGameLoop() {
@@ -94,9 +110,22 @@ export class GameService {
   }
 
   // Process the spin result
-  handleSpinAction(): SpinResponse {
+  async handleSpinAction(): Promise<SpinResponse> {
     this.state.isBettingOpen = false; // Stop all betting
-    this.handleSpin();
+
+    this.state.rngResult = Math.floor(Math.random() * 37)
+    //this.handleSpin();
+
+    const snapshot: RoundSnapshot = {
+      roundId: `round_${Date.now()}`,
+      rngResult: this.state.rngResult,
+      bets: [...this.state.tableState],
+      resolvedAt: null,
+    };
+
+    await this.userRepo.saveRoundSnapshot(snapshot);
+    await this.applyPayouts(snapshot);
+    await this.userRepo.markRoundResolved(snapshot.roundId);
 
     const state = this.getState();
     const roundWinners = state.tableState
@@ -133,6 +162,7 @@ export class GameService {
     };
 
     this.state.users[uniqueId] = newUser;
+    this.userRepo.registerUser(newUser);
     return newUser;
   }
 
@@ -216,7 +246,7 @@ export class GameService {
     return true;
   }
 
-
+  /**
   // Select random winner and update balances
   handleSpin() {
     this.state.rngResult = Math.floor(Math.random() * 37);
@@ -232,13 +262,46 @@ export class GameService {
     });
     return this.state;
   }
+  */
+
+  // Apply the payout of a round based on the round snapshot
+  private async applyPayouts(snapshot: RoundSnapshot): Promise<void> {
+    for (const bet of snapshot.bets) {
+      if (bet.number === snapshot.rngResult) {
+        const user = this.state.users[bet.userId];
+        this.logger.log(
+              `WIN | user=${bet.userId} gain=${bet.amount * 36} case=${bet.number}`,
+            );
+
+        if (user) {
+          user.balance += bet.amount * 36;
+          await this.userRepo.saveBalance(bet.userId, user.balance);
+        } else {
+          // D2 : Player disconnected, persistence of it's gain
+          const persisted = await this.userRepo.findUserById(bet.userId);
+          if (persisted) {
+            const newBalance = persisted.balance + bet.amount * 36;
+            await this.userRepo.saveBalance(bet.userId, newBalance);
+            this.logger.log(
+              `PAYOUT (offline) | user=${bet.userId} gain=${bet.amount * 36}`,
+            );
+          }
+        }
+      }
+    }
+
+    // Logs
+    for (const user of this.userRepo.getAllUsers().values()) {
+      this.logger.log(`FINAL STATE | user=${user.name} balance=${user.balance}`);
+    }
+  }
 
   // Reset the game for a new round
   reset() {
     this.state.rngResult = null;
     this.state.tableState = [];
     this.state.isBettingOpen = true;
-    this.state.timeLeft = 15;
+    this.state.timeLeft = 30;
 
     this.socketServer.emit(GAME_EVENTS.STATE_UPDATE, this.getState());
     return this.state;

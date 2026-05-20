@@ -21,3 +21,25 @@ export interface GameState {
   timeLeft: number; // Synchronized timer (Timer starts at 15 seconds)
 }
 
+/**
+ * D1 : Snapshot of a turn to make it transactional. 
+ */
+export interface RoundSnapshot {
+  roundId: string;
+  rngResult: number;
+  bets: Bet[];
+  resolvedAt: Date | null;  // null = not resolved yet
+}
+
+// Persistence 
+export interface IUserRepository {
+  findUserById(userId: string): Promise<User | null>;
+  // Persistence of the balance of a user
+  saveBalance(userId: string, balance: number): Promise<void>;
+  // Persistence of the turn snapshot
+  saveRoundSnapshot(snapshot: RoundSnapshot): Promise<void>;
+  // Mark a turn as resolved
+  markRoundResolved(roundId: string): Promise<void>;
+  // Return the last turn unresolved if a crash happen
+  getUnresolvedRound(): Promise<RoundSnapshot | null>;
+}
