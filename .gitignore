@@ -137,3 +137,11 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Archive files
+*.zip
+*.rar
+*.7z
+
+# Local game storage
+data/game-storage.json
