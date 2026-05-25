@@ -1,6 +1,7 @@
 import { signalStore, withState, withMethods, withComputed, patchState } from '@ngrx/signals';
-import { computed, effect } from '@angular/core';
-import {GameState, SpinResponse, User} from '../models/game-state.model';
+import { computed } from '@angular/core';
+import {GameState, RoundWinner, SpinResponse} from '../models/game-state.model';
+
 
 /** * Initial state of the game.
  * We add 'userId' to track the local player.
@@ -8,8 +9,8 @@ import {GameState, SpinResponse, User} from '../models/game-state.model';
  */
 const initialState: GameState & {
   userId: string | null;
-  lastWinners: User[];
-  showResultPopup: boolean
+  lastWinners: RoundWinner[];
+  showResultPopup: boolean;
 } = {
   users: {},
   tableState: [],
@@ -17,8 +18,12 @@ const initialState: GameState & {
   rngResult: null,
   timeLeft: 15,
   userId: null,
-  lastWinners: [],      //  Stores winners of the round
-  showResultPopup: false // Controls the visibility of the popup
+  lastWinners: [], // Stores winners of the round
+  showResultPopup: false, // Controls the visibility of the popup
+  board: {
+    type: 'european',
+    numbers: Array.from({ length: 37 }, (_, i) => i),
+  },
 };
 
 export const GameStore = signalStore(
@@ -31,35 +36,36 @@ export const GameStore = signalStore(
     userBalance: computed(() => {
       const id = store.userId();
       const allUsers = store.users();
-      return (id && allUsers[id]) ? allUsers[id].balance : 0;
+      return id && allUsers[id] ? allUsers[id].balance : 0;
     }),
 
     // Get the current player's name
     userName: computed(() => {
       const id = store.userId();
       const allUsers = store.users();
-      return (id && allUsers[id]) ? allUsers[id].name : 'Guest';
+      return id && allUsers[id] ? allUsers[id].name : 'Guest';
     }),
 
     // Check if the player already has a bet on the board
     // We can used  it to block the "Leave Table" action
     hasPlacedBet: computed(() => {
       const id = store.userId();
-      return store.tableState().some(bet => bet.userId === id);
+      return store.tableState().some((bet) => bet.userId === id);
+    }),
+
+    // Check if the user balance is 0 or less
+    isBankrupt: computed(() => {
+      const id = store.userId();
+      const users = store.users();
+
+      if (!id || !users[id]) return false;
+
+      return users[id].balance <= 0;
     }),
   })),
 
   // --- METHODS: How we update the central data ---
   withMethods((store) => {
-
-    /** * EFFECT: Watch for changes in the tableState.
-     * This allows us to see when other players place bets.
-     */
-  /*  effect(() => {
-      const bets = store.tableState();
-      // console.log(' [Effect] The table has changed! Current bets:', bets);
-    });
-*/
     return {
       /**
        * Update the whole state from the Server.
@@ -71,25 +77,27 @@ export const GameStore = signalStore(
           tableState: newState.tableState,
           isBettingOpen: newState.isBettingOpen,
           rngResult: newState.rngResult,
-          timeLeft: newState.timeLeft
+          timeLeft: newState.timeLeft,
+          board: newState.board,
         });
       },
+
       /**
        * Handle the Spin Result.
        * Show the popup with winners for 5 seconds.
        */
       setResult(data: SpinResponse) {
         patchState(store, {
-          lastWinners: data.winners,
+          lastWinners: data.winners ?? [],
           showResultPopup: true,
-          rngResult: data.winningNumber
+          rngResult: data.winningNumber,
         });
 
         // Wait 5 seconds, then hide the popup and reset the result
         setTimeout(() => {
           patchState(store, {
             showResultPopup: false,
-            rngResult: null
+            rngResult: null,
           });
         }, 5000);
       },
@@ -98,12 +106,13 @@ export const GameStore = signalStore(
       setUserId(id: string) {
         patchState(store, { userId: id });
       },
+
       /**
        * Reset local data when user disconnects
        */
       clearStore() {
         patchState(store, initialState);
-      }
+      },
     };
-  })
+  }),
 );

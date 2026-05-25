@@ -7,6 +7,6 @@ export class CreatePlayerDto {
 
   @IsNotEmpty()
   @IsNumber()
-  @Min(1000, { message: 'You need at least 1000 credits to play' })
+  @Min(100, { message: 'You need at least 100 credits to play' })
   readonly amount: number;
 }

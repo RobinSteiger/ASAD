@@ -1,0 +1,404 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36" pages="2">
+  <diagram name="DFD Roulette Final" id="0">
+    <mxGraphModel dx="2910" dy="1358" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="LXywR3UmDza1GWZBb73D-1" parent="1" style="html=1;whiteSpace=wrap;" value="Player" vertex="1">
+          <mxGeometry height="50" width="110" x="-515" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-3" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="&lt;div&gt;Table / bank&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="420" x="-670" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-4" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Player handling" vertex="1">
+          <mxGeometry height="90" width="90" x="-370" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-9" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Bets handling" vertex="1">
+          <mxGeometry height="90" width="90" x="-760" y="280" as="geometry" />
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-11" edge="1" parent="1" source="LXywR3UmDza1GWZBb73D-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0;exitY=0.25;exitDx=0;exitDy=0;" target="CO4ogIFfEtNSloSN01Q9-9" value="Bet amount / number">
+          <mxGeometry relative="1" width="80" x="-0.0486" y="-7" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="-660" y="160" />
+            </Array>
+            <mxPoint x="-500" y="290" as="sourcePoint" />
+            <mxPoint x="-420" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-12" edge="1" parent="1" source="LXywR3UmDza1GWZBb73D-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" target="CO4ogIFfEtNSloSN01Q9-9" value="&lt;div&gt;cancel request&amp;nbsp;&lt;/div&gt;&lt;div&gt;/ number&lt;/div&gt;">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <mxPoint x="-500" y="290" as="sourcePoint" />
+            <mxPoint x="-420" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-13" edge="1" parent="1" source="CO4ogIFfEtNSloSN01Q9-9" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" value="&lt;div&gt;Modification&lt;/div&gt;&lt;div&gt;confirmation&lt;/div&gt;">
+          <mxGeometry relative="1" width="80" x="0.1089" y="-18" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="-570" y="230" />
+            </Array>
+            <mxPoint x="-295" y="300" as="sourcePoint" />
+            <mxPoint x="-510" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-14" edge="1" parent="1" source="CO4ogIFfEtNSloSN01Q9-15" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=1;entryY=0;entryDx=0;entryDy=0;" target="CO4ogIFfEtNSloSN01Q9-3" value="&lt;div&gt;Player&amp;nbsp;&lt;/div&gt;&lt;div&gt;balance updates&lt;/div&gt;">
+          <mxGeometry relative="1" width="80" x="0.0293" y="5" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="-140" y="510" />
+            </Array>
+            <mxPoint x="-5" y="400" as="sourcePoint" />
+            <mxPoint x="-200" y="584" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-15" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="End Game" vertex="1">
+          <mxGeometry height="90" width="90" x="-130" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-18" edge="1" parent="1" source="CO4ogIFfEtNSloSN01Q9-9" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" target="CO4ogIFfEtNSloSN01Q9-3" value="&lt;div&gt;Bet amount&lt;/div&gt;&lt;div&gt;/ number&lt;/div&gt;">
+          <mxGeometry relative="1" width="80" x="0.2956" y="-25" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="-730" y="390" as="sourcePoint" />
+            <mxPoint x="-670" y="590" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-19" edge="1" parent="1" source="CO4ogIFfEtNSloSN01Q9-3" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0.669;entryY=1.02;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.054;exitY=0.059;exitDx=0;exitDy=0;exitPerimeter=0;" target="CO4ogIFfEtNSloSN01Q9-9" value="&lt;div&gt;Table&lt;/div&gt;&lt;div&gt;state&lt;/div&gt;">
+          <mxGeometry relative="1" width="80" x="0.173" y="-8" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="-630" y="600" as="sourcePoint" />
+            <mxPoint x="-690" y="400" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-20" edge="1" parent="1" source="LXywR3UmDza1GWZBb73D-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0;entryY=0;entryDx=0;entryDy=0;exitX=0.575;exitY=1.044;exitDx=0;exitDy=0;exitPerimeter=0;" target="CO4ogIFfEtNSloSN01Q9-4" value="&lt;div&gt;Join&amp;nbsp;&lt;/div&gt;&lt;div&gt;request&lt;/div&gt;">
+          <mxGeometry relative="1" width="80" x="0.3428" y="-14" as="geometry">
+            <mxPoint x="1" as="offset" />
+            <mxPoint x="-108" y="200" as="sourcePoint" />
+            <mxPoint x="-390" y="455" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-21" edge="1" parent="1" source="CO4ogIFfEtNSloSN01Q9-4" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;exitX=0.286;exitY=0.072;exitDx=0;exitDy=0;exitPerimeter=0;" target="LXywR3UmDza1GWZBb73D-1" value="&lt;div&gt;ID&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;">
+          <mxGeometry relative="1" width="80" x="0.3087" y="-2" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="-18" y="230" as="sourcePoint" />
+            <mxPoint x="-300" y="485" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-22" edge="1" parent="1" source="LXywR3UmDza1GWZBb73D-1" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.429;exitY=0.973;exitDx=0;exitDy=0;exitPerimeter=0;" target="CO4ogIFfEtNSloSN01Q9-4" value="leave request">
+          <mxGeometry relative="1" width="80" x="0.5702" y="-20" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="-420" y="270" />
+            </Array>
+            <mxPoint x="-88" y="280" as="sourcePoint" />
+            <mxPoint x="-370" y="535" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-23" edge="1" parent="1" source="CO4ogIFfEtNSloSN01Q9-4" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0.608;entryY=0.059;entryDx=0;entryDy=0;exitX=0.346;exitY=0.99;exitDx=0;exitDy=0;exitPerimeter=0;entryPerimeter=0;" target="CO4ogIFfEtNSloSN01Q9-3" value="&lt;div&gt;Player&amp;nbsp;&lt;/div&gt;&lt;div&gt;balance updates&lt;/div&gt;">
+          <mxGeometry relative="1" width="80" x="0.0293" y="5" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="-68" y="380" as="sourcePoint" />
+            <mxPoint x="-350" y="635" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-24" edge="1" parent="1" source="CO4ogIFfEtNSloSN01Q9-9" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.946;exitY=0.378;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" target="LXywR3UmDza1GWZBb73D-1" value="Ongoing bets">
+          <mxGeometry relative="1" width="80" x="0.0293" y="5" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="-510" y="270" />
+            </Array>
+            <mxPoint x="-468" y="360" as="sourcePoint" />
+            <mxPoint x="-490" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-25" parent="1" style="html=1;whiteSpace=wrap;" value="Roulette" vertex="1">
+          <mxGeometry height="50" width="110" x="70" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-26" edge="1" parent="1" source="CO4ogIFfEtNSloSN01Q9-3" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0;entryY=1;entryDx=0;entryDy=0;exitX=0.945;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" target="CO4ogIFfEtNSloSN01Q9-15" value="Ongoing bets">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <Array as="points">
+              <mxPoint x="-210" y="480" />
+            </Array>
+            <mxPoint x="-300" y="420" as="sourcePoint" />
+            <mxPoint x="-220" y="420" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-27" edge="1" parent="1" source="CO4ogIFfEtNSloSN01Q9-25" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" target="CO4ogIFfEtNSloSN01Q9-15" value="Result">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <mxPoint x="-300" y="420" as="sourcePoint" />
+            <mxPoint x="-220" y="420" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-28" edge="1" parent="1" source="CO4ogIFfEtNSloSN01Q9-15" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="LXywR3UmDza1GWZBb73D-1" value="Winner">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <mxPoint x="-300" y="420" as="sourcePoint" />
+            <mxPoint x="-220" y="420" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-29" parent="1" style="html=1;whiteSpace=wrap;" value="Player" vertex="1">
+          <mxGeometry height="50" width="110" x="-550" y="770" as="geometry" />
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-30" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Table" vertex="1">
+          <mxGeometry height="60" width="420" x="-705" y="1320" as="geometry" />
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-31" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Player handling" vertex="1">
+          <mxGeometry height="90" width="90" x="-405" y="990" as="geometry" />
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-32" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="Bets handling" vertex="1">
+          <mxGeometry height="90" width="90" x="-795" y="990" as="geometry" />
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-33" edge="1" parent="1" source="CO4ogIFfEtNSloSN01Q9-29" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0;exitY=0.25;exitDx=0;exitDy=0;" target="CO4ogIFfEtNSloSN01Q9-32" value="Bet amount / number">
+          <mxGeometry relative="1" width="80" x="-0.0486" y="-7" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="-695" y="870" />
+            </Array>
+            <mxPoint x="-535" y="1000" as="sourcePoint" />
+            <mxPoint x="-455" y="1000" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-34" edge="1" parent="1" source="CO4ogIFfEtNSloSN01Q9-29" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" target="CO4ogIFfEtNSloSN01Q9-32" value="&lt;div&gt;cancel request&amp;nbsp;&lt;/div&gt;&lt;div&gt;/ number&lt;/div&gt;">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <mxPoint x="-535" y="1000" as="sourcePoint" />
+            <mxPoint x="-455" y="1000" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-35" edge="1" parent="1" source="CO4ogIFfEtNSloSN01Q9-32" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" value="&lt;div&gt;Modification&lt;/div&gt;&lt;div&gt;confirmation&lt;/div&gt;">
+          <mxGeometry relative="1" width="80" x="0.1089" y="-18" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="-605" y="940" />
+            </Array>
+            <mxPoint x="-330" y="1010" as="sourcePoint" />
+            <mxPoint x="-545" y="820" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-36" edge="1" parent="1" source="CO4ogIFfEtNSloSN01Q9-37" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0.118;entryY=0.004;entryDx=0;entryDy=0;entryPerimeter=0;" target="CO4ogIFfEtNSloSN01Q9-49" value="&lt;div&gt;Player&amp;nbsp;&lt;/div&gt;&lt;div&gt;balance updates&lt;/div&gt;">
+          <mxGeometry relative="1" width="80" x="0.0293" y="5" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points" />
+            <mxPoint x="-40" y="1110" as="sourcePoint" />
+            <mxPoint x="-235" y="1294" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-37" parent="1" style="ellipse;whiteSpace=wrap;html=1;" value="End Game" vertex="1">
+          <mxGeometry height="90" width="90" x="-165" y="1000" as="geometry" />
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-38" edge="1" parent="1" source="CO4ogIFfEtNSloSN01Q9-32" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0;entryDx=0;entryDy=0;" target="CO4ogIFfEtNSloSN01Q9-30" value="&lt;div&gt;Bet amount&lt;/div&gt;&lt;div&gt;/ number&lt;/div&gt;">
+          <mxGeometry relative="1" width="80" x="0.2956" y="-25" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="-765" y="1100" as="sourcePoint" />
+            <mxPoint x="-705" y="1300" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-39" edge="1" parent="1" source="CO4ogIFfEtNSloSN01Q9-30" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0.768;entryY=0.97;entryDx=0;entryDy=0;exitX=0.077;exitY=0.044;exitDx=0;exitDy=0;exitPerimeter=0;entryPerimeter=0;" target="CO4ogIFfEtNSloSN01Q9-32" value="Table state">
+          <mxGeometry relative="1" width="80" x="0.3012" y="-13" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="-293" y="1190" as="sourcePoint" />
+            <mxPoint x="-575" y="1445" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-40" edge="1" parent="1" source="CO4ogIFfEtNSloSN01Q9-29" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0;entryY=0;entryDx=0;entryDy=0;exitX=0.575;exitY=1.044;exitDx=0;exitDy=0;exitPerimeter=0;" target="CO4ogIFfEtNSloSN01Q9-31" value="Join request">
+          <mxGeometry relative="1" width="80" x="-0.0081" y="-17" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="-143" y="910" as="sourcePoint" />
+            <mxPoint x="-425" y="1165" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-41" edge="1" parent="1" source="CO4ogIFfEtNSloSN01Q9-31" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;exitX=0.286;exitY=0.072;exitDx=0;exitDy=0;exitPerimeter=0;" target="CO4ogIFfEtNSloSN01Q9-29" value="&lt;div&gt;ID&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;">
+          <mxGeometry relative="1" width="80" x="0.3087" y="-2" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="-53" y="940" as="sourcePoint" />
+            <mxPoint x="-335" y="1195" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-42" edge="1" parent="1" source="CO4ogIFfEtNSloSN01Q9-29" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.429;exitY=0.973;exitDx=0;exitDy=0;exitPerimeter=0;" target="CO4ogIFfEtNSloSN01Q9-31" value="leave request">
+          <mxGeometry relative="1" width="80" x="0.5702" y="-20" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="-455" y="980" />
+            </Array>
+            <mxPoint x="-123" y="990" as="sourcePoint" />
+            <mxPoint x="-405" y="1245" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-43" edge="1" parent="1" source="CO4ogIFfEtNSloSN01Q9-31" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0;entryY=0;entryDx=0;entryDy=0;exitX=0.685;exitY=0.943;exitDx=0;exitDy=0;exitPerimeter=0;" target="CO4ogIFfEtNSloSN01Q9-49" value="&lt;div&gt;Player&amp;nbsp;&lt;/div&gt;&lt;div&gt;balance updates&lt;/div&gt;">
+          <mxGeometry relative="1" width="80" x="-0.3204" y="1" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="-103" y="1090" as="sourcePoint" />
+            <mxPoint x="-385" y="1345" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-44" edge="1" parent="1" source="CO4ogIFfEtNSloSN01Q9-32" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.946;exitY=0.378;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" target="CO4ogIFfEtNSloSN01Q9-29" value="Ongoing bets">
+          <mxGeometry relative="1" width="80" x="0.0293" y="5" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="-545" y="980" />
+            </Array>
+            <mxPoint x="-503" y="1070" as="sourcePoint" />
+            <mxPoint x="-525" y="970" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-45" parent="1" style="html=1;whiteSpace=wrap;" value="Roulette" vertex="1">
+          <mxGeometry height="50" width="110" x="35" y="1020" as="geometry" />
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-46" edge="1" parent="1" source="CO4ogIFfEtNSloSN01Q9-30" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;entryX=0;entryY=1;entryDx=0;entryDy=0;exitX=0.945;exitY=0;exitDx=0;exitDy=0;exitPerimeter=0;" target="CO4ogIFfEtNSloSN01Q9-37" value="Ongoing bets">
+          <mxGeometry relative="1" width="80" x="0.5477" y="3" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points" />
+            <mxPoint x="-335" y="1130" as="sourcePoint" />
+            <mxPoint x="-255" y="1130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-47" edge="1" parent="1" source="CO4ogIFfEtNSloSN01Q9-45" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;" target="CO4ogIFfEtNSloSN01Q9-37" value="Result">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <mxPoint x="-335" y="1130" as="sourcePoint" />
+            <mxPoint x="-255" y="1130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-48" edge="1" parent="1" source="CO4ogIFfEtNSloSN01Q9-37" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="CO4ogIFfEtNSloSN01Q9-29" value="Winner">
+          <mxGeometry relative="1" width="80" as="geometry">
+            <mxPoint x="-335" y="1130" as="sourcePoint" />
+            <mxPoint x="-255" y="1130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-49" parent="1" style="rounded=1;whiteSpace=wrap;html=1;" value="Bank" vertex="1">
+          <mxGeometry height="60" width="420" x="-200" y="1320" as="geometry" />
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-51" edge="1" parent="1" source="CO4ogIFfEtNSloSN01Q9-49" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=1;entryDx=0;entryDy=0;" target="CO4ogIFfEtNSloSN01Q9-32" value="&lt;div&gt;Balance&lt;/div&gt;&lt;div&gt;state&lt;/div&gt;">
+          <mxGeometry relative="1" width="80" x="0.0651" y="9" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="-550" y="1210" as="sourcePoint" />
+            <mxPoint x="-470" y="1210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CO4ogIFfEtNSloSN01Q9-52" edge="1" parent="1" source="CO4ogIFfEtNSloSN01Q9-3" style="html=1;verticalAlign=bottom;endArrow=block;curved=0;rounded=0;exitX=0.175;exitY=-0.044;exitDx=0;exitDy=0;entryX=1;entryY=1;entryDx=0;entryDy=0;exitPerimeter=0;" target="CO4ogIFfEtNSloSN01Q9-9" value="&lt;div&gt;Balance&lt;/div&gt;&lt;div&gt;state&lt;/div&gt;">
+          <mxGeometry relative="1" width="80" x="-0.28" y="3" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="8" y="738" as="sourcePoint" />
+            <mxPoint x="-510" y="470" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="zSo8O-S_xS-sI8VWxcBY" name="Page-2">
+    <mxGraphModel dx="1030" dy="679" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="q06gknwmPaCb0rafNdnH-1" parent="1" style="shape=rectangle;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="Player (Client)" vertex="1">
+          <mxGeometry height="70" width="160" x="150" y="100.00001220703126" as="geometry" />
+        </mxCell>
+        <mxCell id="q06gknwmPaCb0rafNdnH-2" parent="1" style="rounded=1;fillColor=#fff2cc;strokeColor=#d6b656;" value="WebSocket Server" vertex="1">
+          <mxGeometry height="70" width="200" x="230" y="345.00001220703126" as="geometry" />
+        </mxCell>
+        <mxCell id="q06gknwmPaCb0rafNdnH-3" parent="1" style="shape=rectangle;fillColor=#d5e8d4;strokeColor=#82b366;" value="Game State Repository&#xa;------------------------&#xa;• Table State (List[Bet])&#xa;• Bets (List[Bet])&#xa;• Users (balance)&#xa;• Timer&#xa;• Connections&#xa;• Status&#xa;• RNG Result" vertex="1">
+          <mxGeometry height="220" width="260" x="660" y="225.00001220703126" as="geometry" />
+        </mxCell>
+        <mxCell id="q06gknwmPaCb0rafNdnH-4" parent="1" style="rounded=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="Bet Service" vertex="1">
+          <mxGeometry height="60" width="150" x="580" y="105.00001220703126" as="geometry" />
+        </mxCell>
+        <mxCell id="q06gknwmPaCb0rafNdnH-5" parent="1" style="rounded=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="Timer Service" vertex="1">
+          <mxGeometry height="60" width="150" x="810" y="105.00001220703126" as="geometry" />
+        </mxCell>
+        <mxCell id="q06gknwmPaCb0rafNdnH-6" parent="1" style="rounded=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="Spin Service" vertex="1">
+          <mxGeometry height="60" width="150" x="580" y="505.00001220703126" as="geometry" />
+        </mxCell>
+        <mxCell id="q06gknwmPaCb0rafNdnH-7" parent="1" style="rounded=1;fillColor=#ffe6cc;strokeColor=#d79b00;" value="Payout Service" vertex="1">
+          <mxGeometry height="60" width="150" x="810" y="505.00001220703126" as="geometry" />
+        </mxCell>
+        <mxCell id="q06gknwmPaCb0rafNdnH-8" edge="1" parent="1" source="q06gknwmPaCb0rafNdnH-1" style="endArrow=block;entryX=0;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="q06gknwmPaCb0rafNdnH-2" value="PUT Bet">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q06gknwmPaCb0rafNdnH-9" edge="1" parent="1" source="q06gknwmPaCb0rafNdnH-1" style="endArrow=block;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0.25;exitY=1;exitDx=0;exitDy=0;" target="q06gknwmPaCb0rafNdnH-2" value="POST Bet">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="190" y="380.00001220703126" />
+            </Array>
+            <mxPoint x="190" y="175.00001220703126" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q06gknwmPaCb0rafNdnH-10" edge="1" parent="1" source="q06gknwmPaCb0rafNdnH-1" style="endArrow=block;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0.401;entryY=-0.007;entryDx=0;entryDy=0;entryPerimeter=0;" target="q06gknwmPaCb0rafNdnH-2" value="GET Game State">
+          <mxGeometry relative="1" x="-0.4843" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q06gknwmPaCb0rafNdnH-11" edge="1" parent="1" source="q06gknwmPaCb0rafNdnH-2" style="endArrow=block;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" target="q06gknwmPaCb0rafNdnH-1" value="Game State">
+          <mxGeometry relative="1" x="-0.5714" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="380" y="135.00001220703126" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q06gknwmPaCb0rafNdnH-12" edge="1" parent="1" source="q06gknwmPaCb0rafNdnH-2" style="endArrow=block;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="q06gknwmPaCb0rafNdnH-4" value="POST / PUT Bet">
+          <mxGeometry relative="1" x="0.4894" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="460" y="380.00001220703126" />
+              <mxPoint x="460" y="135.00001220703126" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q06gknwmPaCb0rafNdnH-13" edge="1" parent="1" source="q06gknwmPaCb0rafNdnH-2" style="endArrow=block;exitX=0.75;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="q06gknwmPaCb0rafNdnH-3" value="Update Connections">
+          <mxGeometry relative="1" x="-0.4762" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="380" y="445.00001220703126" />
+              <mxPoint x="500" y="445.00001220703126" />
+              <mxPoint x="500" y="335.00001220703126" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q06gknwmPaCb0rafNdnH-14" edge="1" parent="1" source="q06gknwmPaCb0rafNdnH-4" style="endArrow=block;entryX=0;entryY=0.25;entryDx=0;entryDy=0;exitX=0.269;exitY=1.04;exitDx=0;exitDy=0;exitPerimeter=0;" target="q06gknwmPaCb0rafNdnH-3" value="Update Bets / Table">
+          <mxGeometry relative="1" x="-0.0158" y="-10" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="620" y="280.00001220703126" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q06gknwmPaCb0rafNdnH-15" edge="1" parent="1" source="q06gknwmPaCb0rafNdnH-5" style="endArrow=block;exitX=0.452;exitY=0.996;exitDx=0;exitDy=0;entryX=0.836;entryY=0.002;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;" target="q06gknwmPaCb0rafNdnH-3" value="Start Timer">
+          <mxGeometry relative="1" x="-0.3382" as="geometry">
+            <mxPoint as="offset" />
+            <mxPoint x="878" y="224.00001220703126" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q06gknwmPaCb0rafNdnH-16" edge="1" parent="1" source="q06gknwmPaCb0rafNdnH-6" style="endArrow=block;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.127;entryY=0.999;entryDx=0;entryDy=0;entryPerimeter=0;" target="q06gknwmPaCb0rafNdnH-3" value="RNG Result">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q06gknwmPaCb0rafNdnH-17" edge="1" parent="1" source="q06gknwmPaCb0rafNdnH-7" style="endArrow=block;entryX=0.75;entryY=1;entryDx=0;entryDy=0;exitX=0.299;exitY=0.014;exitDx=0;exitDy=0;exitPerimeter=0;" target="q06gknwmPaCb0rafNdnH-3" value="Update Balances">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q06gknwmPaCb0rafNdnH-18" edge="1" parent="1" source="q06gknwmPaCb0rafNdnH-3" style="endArrow=block;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0;exitY=0.75;exitDx=0;exitDy=0;" target="q06gknwmPaCb0rafNdnH-2" value="Game State">
+          <mxGeometry relative="1" x="0.1919" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="540" y="390.00001220703126" />
+              <mxPoint x="540" y="485.00001220703126" />
+              <mxPoint x="330" y="485.00001220703126" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q06gknwmPaCb0rafNdnH-19" edge="1" parent="1" source="q06gknwmPaCb0rafNdnH-1" style="endArrow=block;entryX=0;entryY=1;entryDx=0;entryDy=0;exitX=0;exitY=1;exitDx=0;exitDy=0;" target="q06gknwmPaCb0rafNdnH-2" value="Connection">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="150" y="415.00001220703126" />
+            </Array>
+            <mxPoint x="194" y="185.00001220703126" as="sourcePoint" />
+            <mxPoint x="266" y="360.00001220703126" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="q06gknwmPaCb0rafNdnH-20" edge="1" parent="1" source="q06gknwmPaCb0rafNdnH-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.702;exitY=0.997;exitDx=0;exitDy=0;entryX=0.981;entryY=0.005;entryDx=0;entryDy=0;entryPerimeter=0;exitPerimeter=0;" target="q06gknwmPaCb0rafNdnH-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="q06gknwmPaCb0rafNdnH-21" connectable="0" parent="q06gknwmPaCb0rafNdnH-20" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="Stop Timer" vertex="1">
+          <mxGeometry relative="1" x="-0.1088" y="-2" as="geometry">
+            <mxPoint x="2" y="12" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

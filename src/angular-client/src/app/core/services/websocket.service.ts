@@ -1,5 +1,5 @@
 import {inject, Injectable} from '@angular/core';
-import {Bet, GameState, SpinResponse} from '../models/game-state.model';
+import {BoardType, GameState, SpinResponse} from '../models/game-state.model';
 import {Router} from '@angular/router';
 import {GameStore} from '../store/game.store';
 import {io, Socket} from 'socket.io-client';
@@ -10,11 +10,9 @@ import {RegistrationResponse} from '../models/game-response.model';
   providedIn: 'root',
 })
 export class WebsocketService {
-
-  //  Data storage injection
+  // Data storage injection
   private readonly store = inject(GameStore);
   private readonly router = inject(Router);
-
   // The socket instance with strict typing
   private socket!: Socket;
 
@@ -26,21 +24,26 @@ export class WebsocketService {
       console.error('Missing data for connection');
       return;
     }
-
     // Connect to NestJS server on port 3000
     this.socket = io('http://localhost:3000');
 
     // When connection is ready
     this.socket.on('connect', () => {
-      const payload = { name: name.trim(), amount };
-
+      const payload = {
+        name: name.trim(),
+        amount,
+      };
       // Send registration event to server
-      this.socket.emit(GAME_EVENTS.REGISTER, payload, (response: RegistrationResponse) => {
-        if (response.status === 'success' && response.user) {
-          this.store.setUserId(response.user.id); // Save my ID
-          this.router.navigate(['/game']);        // Go to game page
-        }
-      });
+      this.socket.emit(
+        GAME_EVENTS.REGISTER,
+        payload,
+        (response: RegistrationResponse) => {
+          if (response.status === 'success' && response.user) {
+            this.store.setUserId(response.user.id); // Save my ID
+            this.router.navigate(['/game']); // Go to game page
+          }
+        },
+      );
     });
 
     /**
@@ -57,48 +60,69 @@ export class WebsocketService {
      * Server sends this when the wheel stops
      */
     this.socket.on(GAME_EVENTS.RESULT, (data: SpinResponse) => {
-      //  We send the winners to the Store to show the Popup
+      // We send the winners to the Store to show the Popup
       this.store.setResult(data);
     });
-
     // Handle disconnection
     this.socket.on('disconnect', () => {
       this.router.navigate(['/']);
     });
   }
 
-  /**
-   * Send a bet to the server
-   */
-  placeBet(number: number, amount: number): void {
-    const userId = this.store.userId();
+  // Send a board change request to the server
+  // Legacy feature kept temporarily for compatibility
+  changeBoard(type: BoardType): void {
+    this.socket.emit(GAME_EVENTS.CHANGE_BOARD, { type });
+  }
 
-    // Check if I can bet
+  // ADD bet
+  placeBet(number: number, amount: number, boardType: BoardType): void {
+    const userId = this.store.userId();
     if (!userId || !this.store.isBettingOpen()) {
       return;
     }
-
-    // Prepare the bet data
-    const betPayload = {
-      userId: userId,
-      number: number,
-      amount: amount
-    };
-
-    // Send the bet to the server
-    this.socket.emit(GAME_EVENTS.PLACE_BET, betPayload);
+    this.socket.emit(GAME_EVENTS.BET_ACTION, {
+      userId,
+      number,
+      amount,
+      boardType,
+      action: 'place',
+    });
   }
 
-  /**
-   * Close the connection
-   */
+  // PUT bet
+  updateBet(number: number, amount: number, boardType: BoardType): void {
+    const userId = this.store.userId();
+    if (!userId || !this.store.isBettingOpen()) {
+      return;
+    }
+    this.socket.emit(GAME_EVENTS.BET_ACTION, {
+      userId,
+      number,
+      amount,
+      boardType,
+      action: 'update',
+    });
+  }
+
+  // DELETE bet
+  deleteBet(number: number, boardType: BoardType): void {
+    const userId = this.store.userId();
+    if (!userId || !this.store.isBettingOpen()) {
+      return;
+    }
+    this.socket.emit(GAME_EVENTS.BET_ACTION, {
+      userId,
+      number,
+      boardType,
+      action: 'delete',
+    });
+  }
+
+  // Disconnection
   disconnect(): void {
     this.socket?.disconnect();
   }
-
-
-
-
 }
 
 

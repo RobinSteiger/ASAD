@@ -1,13 +1,30 @@
+// Represents the available roulette board types
+export type BoardType = 'european' | 'mini';
+
 export interface User {
   id: string;
   name: string;
   balance: number;
+  // Player selected board
+  boardType?: BoardType;
+  lastWin?: number;
 }
 
 export interface Bet {
   userId: string;
   number: number;
   amount: number;
+  // Board where the bet was placed
+  boardType: BoardType;
+}
+
+// Winner information for one round
+export interface RoundWinner {
+  userId: string;
+  playerName: string;
+  gain: number;
+  winningNumber: number;
+  boardType: BoardType;
 }
 
 /**
@@ -19,5 +36,34 @@ export interface GameState {
   users: { [key: string]: User };
   isBettingOpen: boolean;
   timeLeft: number; // Synchronized timer (Timer starts at 15 seconds)
+  board: BoardConfig; // Current roulette board configuration
 }
 
+/**
+ * D1 : Snapshot of a turn to make it transactional.
+ */
+export interface RoundSnapshot {
+  roundId: string;
+  rngResult: number;
+  bets: Bet[];
+  resolvedAt: Date | null; // null = not resolved yet
+}
+
+// Defines the numbers available for a roulette board
+export interface BoardConfig {
+  type: BoardType;
+  numbers: number[];
+}
+
+// Persistence
+export interface IUserRepository {
+  findUserById(userId: string): Promise<User | null>;
+  // Persistence of the balance of a user
+  saveBalance(userId: string, balance: number): Promise<void>;
+  // Persistence of the turn snapshot
+  saveRoundSnapshot(snapshot: RoundSnapshot): Promise<void>;
+  // Mark a turn as resolved
+  markRoundResolved(roundId: string): Promise<void>;
+  // Return the last turn unresolved if a crash happen
+  getUnresolvedRound(): Promise<RoundSnapshot | null>;
+}

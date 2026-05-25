@@ -1,6 +1,6 @@
-import {Component, computed, inject} from '@angular/core';
-import {GameStore} from '../../../core/store/game.store';
-import {User} from '../../../core/models/game-state.model';
+import { Component, computed, inject } from '@angular/core';
+import { GameStore } from '../../../core/store/game.store';
+import { RoundWinner } from '../../../core/models/game-state.model';
 
 @Component({
   selector: 'app-result',
@@ -37,11 +37,15 @@ import {User} from '../../../core/models/game-state.model';
 
       <div class="mt-10 w-full max-w-md bg-white/5 backdrop-blur-sm rounded-3xl p-6 border border-white/10">
         <h3 class="text-zinc-500 text-[10px] font-black uppercase tracking-[0.3em] mb-4">Round Winners</h3>
+
         <div class="flex flex-col gap-2">
-          @for (winner of winners(); track winner.id) {
+          @for (winner of winners(); track winner.userId) {
             <div class="flex justify-between items-center bg-zinc-800/50 p-3 rounded-xl border border-white/5">
-              <span class="font-bold text-sm">{{ winner.name }}</span>
-              <span class="text-green-400 font-black text-sm">+{{ winner.lastWin }} CHF</span>
+              <span class="font-bold text-sm">{{ winner.playerName }}</span>
+
+              <span class="text-green-400 font-black text-sm">
+                +{{ winner.gain }} CHF
+              </span>
             </div>
           } @empty {
             <p class="text-zinc-600 text-xs italic">No winners this round</p>
@@ -53,15 +57,19 @@ import {User} from '../../../core/models/game-state.model';
   styles: ``,
 })
 export class ResultComponent {
-
   readonly store = inject(GameStore); // Global data source
 
   /** * Get CSS class for the winning number color
    */
   get resultColor(): string {
     const res = this.store.rngResult();
+
     if (res === 0) return 'bg-green-600';
-    const redNumbers = [1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36];
+
+    const redNumbers = [
+      1, 3, 5, 7, 9, 12, 14, 16, 18, 19, 21, 23, 25, 27, 30, 32, 34, 36,
+    ];
+
     return redNumbers.includes(res!) ? 'bg-red-600' : 'bg-zinc-900';
   }
 
@@ -69,26 +77,27 @@ export class ResultComponent {
    */
   isWinner = computed(() => {
     const userId = this.store.userId();
-    const result = this.store.rngResult();
-    // Check if my bet matches the winning number
-    return this.store.tableState().some(bet => bet.userId === userId && bet.number === result);
+
+    return this.store.lastWinners().some(
+      (winner) => winner.userId === userId,
+    );
   });
 
-  /** * Logic: Calculate the money won (36x for single number)
+  /** * Logic: Calculate the money won
    */
   winAmount = computed(() => {
     const userId = this.store.userId();
-    const result = this.store.rngResult();
-    const winningBet = this.store.tableState().find(bet => bet.userId === userId && bet.number === result);
-    // Multiply bet amount by 36
-    return winningBet ? winningBet.amount * 36 : 0;
+
+    const winner = this.store.lastWinners().find(
+      (winner) => winner.userId === userId,
+    );
+
+    return winner ? winner.gain : 0;
   });
 
-  /** * Logic: Filter all users to find winners
+  /** * Logic: Get all winners from the last round
    */
-  winners = computed<User[]>(() => {
-    return Object.values(this.store.users())
-      .filter((user: User) => (user.lastWin ?? 0) > 0)
-      .sort((a: User, b: User) => (b.lastWin ?? 0) - (a.lastWin ?? 0));
+  winners = computed<RoundWinner[]>(() => {
+    return this.store.lastWinners();
   });
 }

@@ -9,13 +9,13 @@ import { Server } from 'socket.io';
 import { GameService } from './game.service';
 import { GAME_EVENTS } from './game.events';
 import { CreatePlayerDto } from '../dto/create-player.dto';
-import { PlaceBetDto } from '../dto/place-bet.dto';
+import { BetActionDto } from '../dto/bet-action.dto';
 
 @WebSocketGateway({
   cors: { origin: '*' }, // Allow Angular to connect
 })
 export class GameGateway implements OnGatewayInit {
-  @WebSocketServer() server: Server;
+  @WebSocketServer() server!: Server;
 
   constructor(private readonly gameService: GameService) {}
 
@@ -30,14 +30,20 @@ export class GameGateway implements OnGatewayInit {
   handleRegister(@MessageBody() data: CreatePlayerDto) {
     return this.gameService.handleRegister(data);
   }
-  // Place a bet
-  @SubscribeMessage(GAME_EVENTS.PLACE_BET)
-  handleBet(@MessageBody() data: PlaceBetDto) {
+  // Handle bet action
+  @SubscribeMessage(GAME_EVENTS.BET_ACTION)
+  handleBetAction(@MessageBody() data: BetActionDto) {
     return this.gameService.handleBetAction(data);
   }
   // Spin the wheel
   @SubscribeMessage(GAME_EVENTS.SPIN)
   handleSpin() {
     return this.gameService.handleSpinAction();
+  }
+
+  // Handle board change requests
+  @SubscribeMessage(GAME_EVENTS.CHANGE_BOARD)
+  handleChangeBoard(@MessageBody() data: { type: 'european' | 'mini' }) {
+    return this.gameService.changeBoard(data.type);
   }
 }
