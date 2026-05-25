@@ -5,6 +5,7 @@ export interface User {
   id: string;
   name: string;
   balance: number;
+  password: string;
   // Player selected board
   boardType?: BoardType;
   lastWin?: number;
@@ -13,6 +14,7 @@ export interface User {
 export interface Bet {
   userId: string;
   number: number;
+  password: string;
   amount: number;
   // Board where the bet was placed
   boardType: BoardType;

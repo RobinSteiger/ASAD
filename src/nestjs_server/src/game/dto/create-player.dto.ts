@@ -6,6 +6,11 @@ export class CreatePlayerDto {
   readonly name: string;
 
   @IsNotEmpty()
+  @IsString()
+  @Length(6, 50)
+  readonly password: string;
+
+  @IsNotEmpty()
   @IsNumber()
   @Min(100, { message: 'You need at least 100 credits to play' })
   readonly amount: number;

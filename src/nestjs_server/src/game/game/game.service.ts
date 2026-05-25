@@ -9,8 +9,10 @@ import {
 import { Server } from 'socket.io';
 import { GAME_EVENTS } from './game.events';
 import { BetActionDto } from '../dto/bet-action.dto';
-import { IUserRepository, RoundSnapshot } from './game.interface';
+import { RoundSnapshot } from './game.interface';
 import { JsonUserRepository } from '../repository/json_user.repository';
+import * as bcrypt from 'bcrypt';
+import {LoginPlayerDto} from "../dto/login-player.dto";
 
 @Injectable()
 export class GameService implements OnModuleInit {
@@ -79,14 +81,78 @@ export class GameService implements OnModuleInit {
     return this.state;
   }
 
-  // Handle player registration
-  handleRegister(dto: CreatePlayerDto): RegistrationResponse {
-    if (dto.amount < 1000) {
-      return { status: 'error', message: 'Minimum 1000 required' };
+// Handle player registration and create the user
+  async handleRegister(dto: CreatePlayerDto,): Promise<RegistrationResponse> {
+    // Refuse invalid data
+    if (!dto || !dto.name || !dto.amount || !dto.password) {
+      return {
+        status: 'error',
+        message: 'Invalid data',
+      };
     }
-    const newUser = this.registerUser(dto);
-    if (!newUser) return { status: 'error', message: 'Invalid data' };
-    return { status: 'success', user: newUser };
+    // Minimum starting balance
+    if (dto.amount < 1000) {
+      return {
+        status: 'error',
+        message: 'Minimum 1000 required',
+      };
+    }
+    // Prevent duplicate usernames
+    const existingUser = Object.values(this.state.users).find(
+        (user) => user.name === dto.name,
+    );
+    if (existingUser) {
+      return {
+        status: 'error',
+        message: 'That username already exists. Please choose a different one.',
+      };
+    }
+    // Hash password before saving
+    const hashedPassword = await bcrypt.hash(dto.password, 10);
+    const uniqueId = `${dto.name}_${Date.now()}`;
+    const newUser: User = {
+      id: uniqueId,
+      name: dto.name,
+      // Store hashed password only
+      password: hashedPassword,
+      balance: dto.amount, // amount entered in the lobby
+      // Board is not selected at registration anymore.
+      // It will be locked when the player places the first bet.
+      boardType: undefined,
+    };
+    this.state.users[uniqueId] = newUser;
+    void this.userRepo.saveUser(newUser);
+    return {
+      status: 'success',
+      user: newUser,
+    };
+  }
+
+  // Handle player login
+  async handleLogin(dto: LoginPlayerDto) {
+    const user = Object.values(this.state.users).find(
+        (u) => u.name === dto.name,
+    );
+    if (!user) {
+      return {
+        status: 'error',
+        message: 'User not found',
+      };
+    }
+    const isPasswordValid = await bcrypt.compare(
+        dto.password,
+        user.password,
+    );
+    if (!isPasswordValid) {
+      return {
+        status: 'error',
+        message: 'Incorrect password',
+      };
+    }
+    return {
+      status: 'success',
+      user,
+    };
   }
 
   // Handle when a player clicks on the board
@@ -193,27 +259,39 @@ export class GameService implements OnModuleInit {
     return response;
   }
 
-  // Create a new user in the system
-  registerUser(dto: CreatePlayerDto): User | null {
-    if (!dto || !dto.name || !dto.amount) return null;
 
+/*  // Create a new user in the system
+  async registerUser(dto: CreatePlayerDto): Promise<User | null> {
+    if (!dto || !dto.name || !dto.amount || !dto.password) {
+      return null;
+    }
+    // Prevent duplicate usernames
+    const existingUser = Object.values(this.state.users).find(
+        (user) => user.name === dto.name,
+    );
+    if (existingUser) {
+      return null;
+    }
+    // Hash password before saving
+    const hashedPassword = await bcrypt.hash(dto.password, 10);
     const uniqueId = `${dto.name}_${Date.now()}`;
-
     const newUser: User = {
       id: uniqueId,
       name: dto.name,
+      // Store hashed password only
+      password: hashedPassword,
       balance: dto.amount, // amount entered in the lobby
-
       // Board is not selected at registration anymore.
       // It will be locked when the player places the first bet.
       boardType: undefined,
     };
 
     this.state.users[uniqueId] = newUser;
+
     void this.userRepo.saveUser(newUser);
 
     return newUser;
-  }
+  }*/
 
   // ADD bet
   placeBet(
@@ -256,6 +334,7 @@ export class GameService implements OnModuleInit {
       // CREATE new bet on the table
       this.state.tableState.push({
         userId,
+        password: user.password,
         number: num,
         amount,
         boardType,

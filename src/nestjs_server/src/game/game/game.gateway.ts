@@ -10,6 +10,7 @@ import { GameService } from './game.service';
 import { GAME_EVENTS } from './game.events';
 import { CreatePlayerDto } from '../dto/create-player.dto';
 import { BetActionDto } from '../dto/bet-action.dto';
+import {LoginPlayerDto} from "../dto/login-player.dto";
 
 @WebSocketGateway({
   cors: { origin: '*' }, // Allow Angular to connect
@@ -29,6 +30,11 @@ export class GameGateway implements OnGatewayInit {
   @SubscribeMessage(GAME_EVENTS.REGISTER)
   handleRegister(@MessageBody() data: CreatePlayerDto) {
     return this.gameService.handleRegister(data);
+  }
+  @SubscribeMessage(GAME_EVENTS.LOGIN)
+  async handleLogin(
+      @MessageBody() dto: LoginPlayerDto) {
+    return this.gameService.handleLogin(dto);
   }
   // Handle bet action
   @SubscribeMessage(GAME_EVENTS.BET_ACTION)

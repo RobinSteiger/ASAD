@@ -13,24 +13,56 @@ export class WebsocketService {
   // Data storage injection
   private readonly store = inject(GameStore);
   private readonly router = inject(Router);
+
   // The socket instance with strict typing
   private socket!: Socket;
 
   /**
-   * Connect to the server with name and money
+   * Create socket connection and register common listeners
    */
-  connect(name: string | null, amount: number | null): void {
-    if (!name || amount === null) {
-      console.error('Missing data for connection');
-      return;
-    }
+  private createConnection(): void {
     // Connect to NestJS server on port 3000
     this.socket = io('http://localhost:3000');
+    /**
+     * LISTEN: State update from server
+     * Server sends this every second
+     */
+    this.socket.on(GAME_EVENTS.STATE_UPDATE, (data: GameState) => {
+      // Push the new server data into the Store
+      this.store.updateGameState(data);
+    });
+    /**
+     * LISTEN: Final spin result
+     * Server sends this when the wheel stops
+     */
+    this.socket.on(GAME_EVENTS.RESULT, (data: SpinResponse) => {
+      // We send the winners to the Store to show the Popup
+      this.store.setResult(data);
+    });
+    // Handle server errors
+    this.socket.on(GAME_EVENTS.ERROR, (error) => {
+      console.error('Server error:', error);
+    });
+    // Handle disconnection
+    this.socket.on('disconnect', () => {
+      this.router.navigate(['/']);
+    });
+  }
 
+  /**
+   * Register a new player with name, password and starting money
+   */
+  register(name: string | null, password: string | null, amount: number | null,  onError?: (message: string) => void,): void {
+    if (!name || !password || amount === null) {
+      console.error('Missing data for registration');
+      return;
+    }
+    this.createConnection();
     // When connection is ready
     this.socket.on('connect', () => {
       const payload = {
         name: name.trim(),
+        password,
         amount,
       };
       // Send registration event to server
@@ -41,31 +73,42 @@ export class WebsocketService {
           if (response.status === 'success' && response.user) {
             this.store.setUserId(response.user.id); // Save my ID
             this.router.navigate(['/game']); // Go to game page
+            return;
           }
+          onError?.(response.message ?? 'Unknown error');
         },
       );
     });
+  }
 
-    /**
-     * LISTEN: State update from server
-     * Server sends this every second
-     */
-    this.socket.on(GAME_EVENTS.STATE_UPDATE, (data: GameState) => {
-      // Push the new server data into the Store
-      this.store.updateGameState(data);
-    });
-
-    /**
-     * LISTEN: Final spin result
-     * Server sends this when the wheel stops
-     */
-    this.socket.on(GAME_EVENTS.RESULT, (data: SpinResponse) => {
-      // We send the winners to the Store to show the Popup
-      this.store.setResult(data);
-    });
-    // Handle disconnection
-    this.socket.on('disconnect', () => {
-      this.router.navigate(['/']);
+  /**
+   * Login an existing player with name and password
+   */
+  login(name: string | null, password: string | null, onError?: (message: string) => void,): void {
+    if (!name || !password) {
+      console.error('Missing data for login');
+      return;
+    }
+    this.createConnection();
+    // When connection is ready
+    this.socket.on('connect', () => {
+      const payload = {
+        name: name.trim(),
+        password,
+      };
+      // Send login event to server
+      this.socket.emit(
+        GAME_EVENTS.LOGIN,
+        payload,
+        (response: RegistrationResponse) => {
+          if (response.status === 'success' && response.user) {
+            this.store.setUserId(response.user.id); // Save my ID
+            this.router.navigate(['/game']); // Go to game page
+            return;
+          }
+          onError?.(response.message ?? 'Unknown error');
+        },
+      );
     });
   }
 
