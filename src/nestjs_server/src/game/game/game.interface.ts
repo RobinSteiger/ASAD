@@ -54,16 +54,20 @@ export interface BoardConfig {
   type: BoardType;
   numbers: number[];
 }
-
 // Persistence
 export interface IUserRepository {
+  // Find one user with his id
   findUserById(userId: string): Promise<User | null>;
-  // Persistence of the balance of a user
+  // Return all saved users
+  findAllUsers(): Promise<User[]>;
+  // Save or update one user
+  saveUser(user: User): Promise<void>;
+  // Save the balance of a user
   saveBalance(userId: string, balance: number): Promise<void>;
-  // Persistence of the turn snapshot
+  // Save the snapshot of one round
   saveRoundSnapshot(snapshot: RoundSnapshot): Promise<void>;
-  // Mark a turn as resolved
+  // Mark one round as resolved
   markRoundResolved(roundId: string): Promise<void>;
-  // Return the last turn unresolved if a crash happen
+  // Return one unresolved round after a crash
   getUnresolvedRound(): Promise<RoundSnapshot | null>;
 }

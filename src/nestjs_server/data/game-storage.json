@@ -1,0 +1,198 @@
+{
+  "users": [
+    {
+      "id": "gdsgsdgsdgdsgsdgsddgsgds_1779708248347",
+      "name": "gdsgsdgsdgdsgsdgsddgsgds",
+      "balance": 845
+    }
+  ],
+  "rounds": [
+    {
+      "roundId": "round_1779707858842",
+      "rngResult": 3,
+      "bets": [],
+      "resolvedAt": "2026-05-25T11:17:38.846Z"
+    },
+    {
+      "roundId": "round_1779707894859",
+      "rngResult": 12,
+      "bets": [],
+      "resolvedAt": "2026-05-25T11:18:14.863Z"
+    },
+    {
+      "roundId": "round_1779707930876",
+      "rngResult": 33,
+      "bets": [],
+      "resolvedAt": "2026-05-25T11:18:50.880Z"
+    },
+    {
+      "roundId": "round_1779707966896",
+      "rngResult": 25,
+      "bets": [],
+      "resolvedAt": "2026-05-25T11:19:26.900Z"
+    },
+    {
+      "roundId": "round_1779708002906",
+      "rngResult": 8,
+      "bets": [],
+      "resolvedAt": "2026-05-25T11:20:02.911Z"
+    },
+    {
+      "roundId": "round_1779708038922",
+      "rngResult": 26,
+      "bets": [],
+      "resolvedAt": "2026-05-25T11:20:38.925Z"
+    },
+    {
+      "roundId": "round_1779708085005",
+      "rngResult": 22,
+      "bets": [],
+      "resolvedAt": "2026-05-25T11:21:25.010Z"
+    },
+    {
+      "roundId": "round_1779708121036",
+      "rngResult": 4,
+      "bets": [],
+      "resolvedAt": "2026-05-25T11:22:01.040Z"
+    },
+    {
+      "roundId": "round_1779708157053",
+      "rngResult": 27,
+      "bets": [],
+      "resolvedAt": "2026-05-25T11:22:37.056Z"
+    },
+    {
+      "roundId": "round_1779708202927",
+      "rngResult": 26,
+      "bets": [],
+      "resolvedAt": "2026-05-25T11:23:22.931Z"
+    },
+    {
+      "roundId": "round_1779708238104",
+      "rngResult": 35,
+      "bets": [],
+      "resolvedAt": "2026-05-25T11:23:58.109Z"
+    },
+    {
+      "roundId": "round_1779708274120",
+      "rngResult": 20,
+      "bets": [
+        {
+          "userId": "gdsgsdgsdgdsgsdgsddgsgds_1779708248347",
+          "number": 7,
+          "amount": 155,
+          "boardType": "european"
+        }
+      ],
+      "resolvedAt": "2026-05-25T11:24:34.123Z"
+    },
+    {
+      "roundId": "round_1779708310140",
+      "rngResult": 35,
+      "bets": [],
+      "resolvedAt": "2026-05-25T11:25:10.143Z"
+    },
+    {
+      "roundId": "round_1779708393913",
+      "rngResult": 28,
+      "bets": [],
+      "resolvedAt": "2026-05-25T11:26:33.918Z"
+    },
+    {
+      "roundId": "round_1779708429931",
+      "rngResult": 10,
+      "bets": [],
+      "resolvedAt": "2026-05-25T11:27:09.935Z"
+    },
+    {
+      "roundId": "round_1779708465945",
+      "rngResult": 6,
+      "bets": [],
+      "resolvedAt": "2026-05-25T11:27:45.949Z"
+    },
+    {
+      "roundId": "round_1779708501963",
+      "rngResult": 28,
+      "bets": [],
+      "resolvedAt": "2026-05-25T11:28:21.967Z"
+    },
+    {
+      "roundId": "round_1779708537981",
+      "rngResult": 18,
+      "bets": [],
+      "resolvedAt": "2026-05-25T11:28:57.986Z"
+    },
+    {
+      "roundId": "round_1779708596033",
+      "rngResult": 33,
+      "bets": [],
+      "resolvedAt": "2026-05-25T11:29:56.038Z"
+    },
+    {
+      "roundId": "round_1779708632046",
+      "rngResult": 20,
+      "bets": [],
+      "resolvedAt": "2026-05-25T11:30:32.050Z"
+    },
+    {
+      "roundId": "round_1779708668064",
+      "rngResult": 2,
+      "bets": [],
+      "resolvedAt": "2026-05-25T11:31:08.068Z"
+    },
+    {
+      "roundId": "round_1779708704080",
+      "rngResult": 16,
+      "bets": [],
+      "resolvedAt": "2026-05-25T11:31:44.083Z"
+    },
+    {
+      "roundId": "round_1779708740102",
+      "rngResult": 0,
+      "bets": [],
+      "resolvedAt": "2026-05-25T11:32:20.106Z"
+    },
+    {
+      "roundId": "round_1779708776130",
+      "rngResult": 1,
+      "bets": [],
+      "resolvedAt": "2026-05-25T11:32:56.136Z"
+    },
+    {
+      "roundId": "round_1779708812148",
+      "rngResult": 11,
+      "bets": [],
+      "resolvedAt": "2026-05-25T11:33:32.151Z"
+    },
+    {
+      "roundId": "round_1779708848165",
+      "rngResult": 17,
+      "bets": [],
+      "resolvedAt": "2026-05-25T11:34:08.171Z"
+    },
+    {
+      "roundId": "round_1779708884179",
+      "rngResult": 0,
+      "bets": [],
+      "resolvedAt": "2026-05-25T11:34:44.192Z"
+    },
+    {
+      "roundId": "round_1779708920197",
+      "rngResult": 21,
+      "bets": [],
+      "resolvedAt": "2026-05-25T11:35:20.204Z"
+    },
+    {
+      "roundId": "round_1779708956211",
+      "rngResult": 2,
+      "bets": [],
+      "resolvedAt": "2026-05-25T11:35:56.215Z"
+    },
+    {
+      "roundId": "round_1779708992225",
+      "rngResult": 13,
+      "bets": [],
+      "resolvedAt": "2026-05-25T11:36:32.228Z"
+    }
+  ]
+}

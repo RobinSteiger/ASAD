@@ -10,7 +10,7 @@ import { Server } from 'socket.io';
 import { GAME_EVENTS } from './game.events';
 import { BetActionDto } from '../dto/bet-action.dto';
 import { IUserRepository, RoundSnapshot } from './game.interface';
-import { InMemoryUserRepository } from '../repository/in_memory_user.repository';
+import { JsonUserRepository } from '../repository/json_user.repository';
 
 @Injectable()
 export class GameService implements OnModuleInit {
@@ -38,10 +38,18 @@ export class GameService implements OnModuleInit {
   // Test Dev
   // private readonly ROUND_DURATION = 1000;
 
-  constructor(private readonly userRepo: InMemoryUserRepository) {}
+
+  constructor(private readonly userRepo: JsonUserRepository) {}
 
   // Restart the server after a crash
   async onModuleInit() {
+    // Reload saved users from the JSON file
+    const savedUsers = await this.userRepo.findAllUsers();
+    for (const user of savedUsers) {
+      this.state.users[user.id] = user;
+    }
+    this.logger.log(`${savedUsers.length} users restored from storage`);
+    // Replay unresolved round after a crash
     const unresolved = await this.userRepo.getUnresolvedRound();
     if (unresolved) {
       this.logger.warn(
@@ -51,7 +59,6 @@ export class GameService implements OnModuleInit {
       await this.userRepo.markRoundResolved(unresolved.roundId);
     }
   }
-
   // Start the game
   startGameLoop() {
     setInterval(() => {
@@ -203,7 +210,7 @@ export class GameService implements OnModuleInit {
     };
 
     this.state.users[uniqueId] = newUser;
-    this.userRepo.registerUser(newUser);
+    void this.userRepo.saveUser(newUser);
 
     return newUser;
   }
