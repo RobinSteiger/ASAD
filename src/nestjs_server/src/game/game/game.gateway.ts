@@ -8,9 +8,9 @@ import {
 import { Server } from 'socket.io';
 import { GameService } from './game.service';
 import { GAME_EVENTS } from './game.events';
-import { CreatePlayerDto } from '../dto/create-player.dto';
-import { BetActionDto } from '../dto/bet-action.dto';
-import {LoginPlayerDto} from "../dto/login-player.dto";
+//import { CreatePlayerDto } from '../dto/create-player.dto';
+//import { BetActionDto } from '../dto/bet-action.dto';
+//import {LoginPlayerDto} from "../dto/login-player.dto";
 
 @WebSocketGateway({
   cors: { origin: '*' }, // Allow Angular to connect
@@ -28,18 +28,18 @@ export class GameGateway implements OnGatewayInit {
   }
   // Register a new player
   @SubscribeMessage(GAME_EVENTS.REGISTER)
-  handleRegister(@MessageBody() data: CreatePlayerDto) {
-    return this.gameService.handleRegister(data);
+  handleRegister(@MessageBody() encryptedData: string) {
+    return this.gameService.handleRegister(encryptedData);
   }
   @SubscribeMessage(GAME_EVENTS.LOGIN)
   async handleLogin(
-      @MessageBody() dto: LoginPlayerDto) {
-    return this.gameService.handleLogin(dto);
+      @MessageBody() encryptedData: string) {
+    return this.gameService.handleLogin(encryptedData);
   }
   // Handle bet action
   @SubscribeMessage(GAME_EVENTS.BET_ACTION)
-  handleBetAction(@MessageBody() data: BetActionDto) {
-    return this.gameService.handleBetAction(data);
+  handleBetAction(@MessageBody() encryptedData: string) {
+    return this.gameService.handleBetAction(encryptedData);
   }
   // Spin the wheel
   @SubscribeMessage(GAME_EVENTS.SPIN)
@@ -49,7 +49,7 @@ export class GameGateway implements OnGatewayInit {
 
   // Handle board change requests
   @SubscribeMessage(GAME_EVENTS.CHANGE_BOARD)
-  handleChangeBoard(@MessageBody() data: { type: 'european' | 'mini' }) {
-    return this.gameService.changeBoard(data.type);
+  handleChangeBoard(@MessageBody() encryptedData: string) {
+    return this.gameService.changeBoard(encryptedData);
   }
 }

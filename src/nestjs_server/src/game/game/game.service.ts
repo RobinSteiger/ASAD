@@ -13,6 +13,7 @@ import { RoundSnapshot } from './game.interface';
 import { JsonUserRepository } from '../repository/json_user.repository';
 import * as bcrypt from 'bcrypt';
 import {LoginPlayerDto} from "../dto/login-player.dto";
+import {encryptPayload, decryptPayload} from '../utils/encryption.util';
 
 @Injectable()
 export class GameService implements OnModuleInit {
@@ -68,7 +69,7 @@ export class GameService implements OnModuleInit {
         // Decrease time every second
         this.state.timeLeft--;
         // Update all players with the new time
-        this.socketServer.emit(GAME_EVENTS.STATE_UPDATE, this.getState());
+        this.socketServer.emit(GAME_EVENTS.STATE_UPDATE, encryptPayload(this.getState()));
       } else if (this.state.timeLeft === 0 && this.state.isBettingOpen) {
         // Time is up! Close bets and spin
         this.handleSpinAction();
@@ -82,30 +83,31 @@ export class GameService implements OnModuleInit {
   }
 
 // Handle player registration and create the user
-  async handleRegister(dto: CreatePlayerDto,): Promise<RegistrationResponse> {
+  async handleRegister(encryptedData: string): Promise<string> {
+    const dto = decryptPayload(encryptedData) as CreatePlayerDto;
     // Refuse invalid data
     if (!dto || !dto.name || !dto.amount || !dto.password) {
-      return {
+      return encryptPayload({
         status: 'error',
         message: 'Invalid data',
-      };
+      });
     }
     // Minimum starting balance
     if (dto.amount < 1000) {
-      return {
+      return encryptPayload({
         status: 'error',
         message: 'Minimum 1000 required',
-      };
+      });
     }
     // Prevent duplicate usernames
     const existingUser = Object.values(this.state.users).find(
         (user) => user.name === dto.name,
     );
     if (existingUser) {
-      return {
+      return encryptPayload({
         status: 'error',
         message: 'That username already exists. Please choose a different one.',
-      };
+      });
     }
     // Hash password before saving
     const hashedPassword = await bcrypt.hash(dto.password, 10);
@@ -122,41 +124,43 @@ export class GameService implements OnModuleInit {
     };
     this.state.users[uniqueId] = newUser;
     void this.userRepo.saveUser(newUser);
-    return {
+    return encryptPayload({
       status: 'success',
       user: newUser,
-    };
+    });
   }
 
   // Handle player login
-  async handleLogin(dto: LoginPlayerDto) {
+  async handleLogin(encryptedData: string) {
+    const dto = decryptPayload(encryptedData) as LoginPlayerDto;
     const user = Object.values(this.state.users).find(
         (u) => u.name === dto.name,
     );
     if (!user) {
-      return {
+      return encryptPayload({
         status: 'error',
         message: 'User not found',
-      };
+      });
     }
     const isPasswordValid = await bcrypt.compare(
         dto.password,
         user.password,
     );
     if (!isPasswordValid) {
-      return {
+      return encryptPayload({
         status: 'error',
         message: 'Incorrect password',
-      };
+      });
     }
-    return {
+    return encryptPayload({
       status: 'success',
       user,
-    };
+    });
   }
 
   // Handle when a player clicks on the board
-  handleBetAction(dto: BetActionDto): BetResponse {
+  handleBetAction(encryptedData: string): BetResponse {
+    const dto = decryptPayload(encryptedData) as BetActionDto;
     let isOk = false;
 
     // Check if the number is valid for the selected board
@@ -199,7 +203,7 @@ export class GameService implements OnModuleInit {
 
     // If the action worked, send the new game state
     if (isOk) {
-      this.socketServer.emit(GAME_EVENTS.STATE_UPDATE, this.getState());
+      this.socketServer.emit(GAME_EVENTS.STATE_UPDATE, encryptPayload(this.getState()));
       return { status: 'success' };
     }
 
@@ -251,7 +255,7 @@ export class GameService implements OnModuleInit {
     };
 
     // Send the result to all players
-    this.socketServer.emit(GAME_EVENTS.RESULT, response);
+    this.socketServer.emit(GAME_EVENTS.RESULT, encryptPayload(response));
 
     // Wait 5 seconds before starting a new round
     setTimeout(() => this.reset(), 5000);
@@ -417,7 +421,9 @@ export class GameService implements OnModuleInit {
   }
 
   // Change the current roulette board
-  changeBoard(type: BoardType): GameState {
+  changeBoard(encryptedData: string): GameState {
+    const data = decryptPayload(encryptedData) as { type: 'european' | 'mini' };
+    const type = data.type;
     // Prevent board changes during an active round
     if (!this.state.isBettingOpen || this.state.tableState.length > 0) {
       return this.state;
@@ -435,7 +441,7 @@ export class GameService implements OnModuleInit {
             };
 
     // Broadcast the updated state to all clients
-    this.socketServer.emit(GAME_EVENTS.STATE_UPDATE, this.getState());
+    this.socketServer.emit(GAME_EVENTS.STATE_UPDATE, encryptPayload(this.getState()));
 
     return this.state;
   }
@@ -513,7 +519,7 @@ export class GameService implements OnModuleInit {
       user.boardType = undefined;
     });
 
-    this.socketServer.emit(GAME_EVENTS.STATE_UPDATE, this.getState());
+    this.socketServer.emit(GAME_EVENTS.STATE_UPDATE, encryptPayload(this.getState()));
 
     return this.state;
   }

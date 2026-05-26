@@ -5,6 +5,7 @@ import {GameStore} from '../store/game.store';
 import {io, Socket} from 'socket.io-client';
 import {GAME_EVENTS} from '../../shared/game.events';
 import {RegistrationResponse} from '../models/game-response.model';
+import {encryptPayload, decryptPayload} from '../utils/encryption.util';
 
 @Injectable({
   providedIn: 'root',
@@ -27,7 +28,8 @@ export class WebsocketService {
      * LISTEN: State update from server
      * Server sends this every second
      */
-    this.socket.on(GAME_EVENTS.STATE_UPDATE, (data: GameState) => {
+    this.socket.on(GAME_EVENTS.STATE_UPDATE, (encryptedData: string) => {
+      const data = decryptPayload(encryptedData) as GameState;
       // Push the new server data into the Store
       this.store.updateGameState(data);
     });
@@ -35,7 +37,8 @@ export class WebsocketService {
      * LISTEN: Final spin result
      * Server sends this when the wheel stops
      */
-    this.socket.on(GAME_EVENTS.RESULT, (data: SpinResponse) => {
+    this.socket.on(GAME_EVENTS.RESULT, (encryptedData: string) => {
+      const data = decryptPayload(encryptedData) as SpinResponse;
       // We send the winners to the Store to show the Popup
       this.store.setResult(data);
     });
@@ -68,8 +71,10 @@ export class WebsocketService {
       // Send registration event to server
       this.socket.emit(
         GAME_EVENTS.REGISTER,
-        payload,
-        (response: RegistrationResponse) => {
+        encryptPayload(payload),
+        (encryptedResponse: string) => {
+          const response = decryptPayload(encryptedResponse) as RegistrationResponse;
+
           if (response.status === 'success' && response.user) {
             this.store.setUserId(response.user.id); // Save my ID
             this.router.navigate(['/game']); // Go to game page
@@ -99,8 +104,10 @@ export class WebsocketService {
       // Send login event to server
       this.socket.emit(
         GAME_EVENTS.LOGIN,
-        payload,
-        (response: RegistrationResponse) => {
+        encryptPayload(payload),
+        (encryptedResponse: string) => {
+          const response = decryptPayload(encryptedResponse) as RegistrationResponse;
+
           if (response.status === 'success' && response.user) {
             this.store.setUserId(response.user.id); // Save my ID
             this.router.navigate(['/game']); // Go to game page
@@ -115,7 +122,7 @@ export class WebsocketService {
   // Send a board change request to the server
   // Legacy feature kept temporarily for compatibility
   changeBoard(type: BoardType): void {
-    this.socket.emit(GAME_EVENTS.CHANGE_BOARD, { type });
+    this.socket.emit(GAME_EVENTS.CHANGE_BOARD, encryptPayload({ type }));
   }
 
   // ADD bet
@@ -124,13 +131,13 @@ export class WebsocketService {
     if (!userId || !this.store.isBettingOpen()) {
       return;
     }
-    this.socket.emit(GAME_EVENTS.BET_ACTION, {
+    this.socket.emit(GAME_EVENTS.BET_ACTION, encryptPayload({
       userId,
       number,
       amount,
       boardType,
       action: 'place',
-    });
+    }));
   }
 
   // PUT bet
@@ -139,13 +146,13 @@ export class WebsocketService {
     if (!userId || !this.store.isBettingOpen()) {
       return;
     }
-    this.socket.emit(GAME_EVENTS.BET_ACTION, {
+    this.socket.emit(GAME_EVENTS.BET_ACTION, encryptPayload({
       userId,
       number,
       amount,
       boardType,
       action: 'update',
-    });
+    }));
   }
 
   // DELETE bet
@@ -154,12 +161,12 @@ export class WebsocketService {
     if (!userId || !this.store.isBettingOpen()) {
       return;
     }
-    this.socket.emit(GAME_EVENTS.BET_ACTION, {
+    this.socket.emit(GAME_EVENTS.BET_ACTION, encryptPayload({
       userId,
       number,
       boardType,
       action: 'delete',
-    });
+    }));
   }
 
   // Disconnection
