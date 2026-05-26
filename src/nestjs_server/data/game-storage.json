@@ -4,6 +4,20 @@
       "id": "gdsgsdgsdgdsgsdgsddgsgds_1779708248347",
       "name": "gdsgsdgsdgdsgsdgsddgsgds",
       "balance": 845
+    },
+    {
+      "id": "rob_1779807814851",
+      "name": "rob",
+      "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+      "balance": 1820,
+      "boardType": "european"
+    },
+    {
+      "id": "ro2_1779807955403",
+      "name": "ro2",
+      "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+      "balance": 730,
+      "boardType": "mini"
     }
   ],
   "rounds": [
@@ -409,6 +423,2618 @@
       "rngResult": 9,
       "bets": [],
       "resolvedAt": "2026-05-25T11:58:09.360Z"
+    },
+    {
+      "roundId": "round_1779807838045",
+      "rngResult": 36,
+      "bets": [
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 10,
+          "amount": 10,
+          "boardType": "european"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 11,
+          "amount": 10,
+          "boardType": "european"
+        }
+      ],
+      "resolvedAt": "2026-05-26T15:03:58.064Z"
+    },
+    {
+      "roundId": "round_1779807874332",
+      "rngResult": 11,
+      "bets": [],
+      "resolvedAt": "2026-05-26T15:04:34.350Z"
+    },
+    {
+      "roundId": "round_1779807909665",
+      "rngResult": 4,
+      "bets": [
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 4,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 8,
+          "amount": 10,
+          "boardType": "mini"
+        }
+      ],
+      "resolvedAt": "2026-05-26T15:05:09.696Z"
+    },
+    {
+      "roundId": "round_1779807945893",
+      "rngResult": 23,
+      "bets": [
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 4,
+          "amount": 10,
+          "boardType": "european"
+        }
+      ],
+      "resolvedAt": "2026-05-26T15:05:45.917Z"
+    },
+    {
+      "roundId": "round_1779807982174",
+      "rngResult": 19,
+      "bets": [
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 2,
+          "amount": 10,
+          "boardType": "european"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 8,
+          "amount": 10,
+          "boardType": "european"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 2,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 6,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 11,
+          "amount": 10,
+          "boardType": "mini"
+        }
+      ],
+      "resolvedAt": "2026-05-26T15:06:22.191Z"
+    },
+    {
+      "roundId": "round_1779808018427",
+      "rngResult": 17,
+      "bets": [],
+      "resolvedAt": "2026-05-26T15:06:58.441Z"
+    },
+    {
+      "roundId": "round_1779808053652",
+      "rngResult": 24,
+      "bets": [],
+      "resolvedAt": "2026-05-26T15:07:33.674Z"
+    },
+    {
+      "roundId": "round_1779808089857",
+      "rngResult": 1,
+      "bets": [],
+      "resolvedAt": "2026-05-26T15:08:09.876Z"
+    },
+    {
+      "roundId": "round_1779808126126",
+      "rngResult": 35,
+      "bets": [],
+      "resolvedAt": "2026-05-26T15:08:46.143Z"
+    },
+    {
+      "roundId": "round_1779808162385",
+      "rngResult": 32,
+      "bets": [],
+      "resolvedAt": "2026-05-26T15:09:22.402Z"
+    },
+    {
+      "roundId": "round_1779808198637",
+      "rngResult": 32,
+      "bets": [],
+      "resolvedAt": "2026-05-26T15:09:58.652Z"
+    },
+    {
+      "roundId": "round_1779808233898",
+      "rngResult": 31,
+      "bets": [],
+      "resolvedAt": "2026-05-26T15:10:33.942Z"
+    },
+    {
+      "roundId": "round_1779808275780",
+      "rngResult": 2,
+      "bets": [],
+      "resolvedAt": "2026-05-26T15:11:15.797Z"
+    },
+    {
+      "roundId": "round_1779808312049",
+      "rngResult": 21,
+      "bets": [],
+      "resolvedAt": "2026-05-26T15:11:52.066Z"
+    },
+    {
+      "roundId": "round_1779808347309",
+      "rngResult": 8,
+      "bets": [],
+      "resolvedAt": "2026-05-26T15:12:27.330Z"
+    },
+    {
+      "roundId": "round_1779808382579",
+      "rngResult": 15,
+      "bets": [],
+      "resolvedAt": "2026-05-26T15:13:02.598Z"
+    },
+    {
+      "roundId": "round_1779808417882",
+      "rngResult": 6,
+      "bets": [],
+      "resolvedAt": "2026-05-26T15:13:37.897Z"
+    },
+    {
+      "roundId": "round_1779808454139",
+      "rngResult": 11,
+      "bets": [],
+      "resolvedAt": "2026-05-26T15:14:14.149Z"
+    },
+    {
+      "roundId": "round_1779808500939",
+      "rngResult": 18,
+      "bets": [],
+      "resolvedAt": "2026-05-26T15:15:00.958Z"
+    },
+    {
+      "roundId": "round_1779808536216",
+      "rngResult": 11,
+      "bets": [
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 0,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 4,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 8,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 12,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 2,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 3,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 1,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 5,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 6,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 7,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 11,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 10,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 9,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 8,
+          "amount": 10,
+          "boardType": "european"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 26,
+          "amount": 10,
+          "boardType": "european"
+        }
+      ],
+      "resolvedAt": "2026-05-26T15:15:36.246Z"
+    },
+    {
+      "roundId": "round_1779808572444",
+      "rngResult": 27,
+      "bets": [],
+      "resolvedAt": "2026-05-26T15:16:12.455Z"
+    },
+    {
+      "roundId": "round_1779808607646",
+      "rngResult": 14,
+      "bets": [],
+      "resolvedAt": "2026-05-26T15:16:47.666Z"
+    },
+    {
+      "roundId": "round_1779808642914",
+      "rngResult": 30,
+      "bets": [],
+      "resolvedAt": "2026-05-26T15:17:22.938Z"
+    },
+    {
+      "roundId": "round_1779808678203",
+      "rngResult": 30,
+      "bets": [],
+      "resolvedAt": "2026-05-26T15:17:58.223Z"
+    },
+    {
+      "roundId": "round_1779808751413",
+      "rngResult": 14,
+      "bets": [
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 15,
+          "amount": 10,
+          "boardType": "european"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 11,
+          "amount": 10,
+          "boardType": "european"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 6,
+          "amount": 10,
+          "boardType": "mini"
+        }
+      ],
+      "resolvedAt": "2026-05-26T15:19:11.425Z"
+    },
+    {
+      "roundId": "round_1779808786686",
+      "rngResult": 3,
+      "bets": [],
+      "resolvedAt": "2026-05-26T15:19:46.707Z"
+    },
+    {
+      "roundId": "round_1779808822998",
+      "rngResult": 26,
+      "bets": [
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 0,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 1,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 2,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 3,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 4,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 5,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 6,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 7,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 8,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 9,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 10,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 11,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 12,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 14,
+          "amount": 10,
+          "boardType": "european"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 20,
+          "amount": 10,
+          "boardType": "european"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 26,
+          "amount": 10,
+          "boardType": "european"
+        }
+      ],
+      "resolvedAt": "2026-05-26T15:20:23.031Z"
+    },
+    {
+      "roundId": "round_european_1779828878027",
+      "boardType": "european",
+      "rngResult": 21,
+      "bets": [],
+      "resolvedAt": "2026-05-26T20:54:38.208Z"
+    },
+    {
+      "roundId": "round_mini_1779828878039",
+      "boardType": "mini",
+      "rngResult": 10,
+      "bets": [],
+      "resolvedAt": "2026-05-26T20:54:38.229Z"
+    },
+    {
+      "roundId": "round_european_1779828914369",
+      "boardType": "european",
+      "rngResult": 4,
+      "bets": [],
+      "resolvedAt": "2026-05-26T20:55:14.512Z"
+    },
+    {
+      "roundId": "round_mini_1779828914400",
+      "boardType": "mini",
+      "rngResult": 11,
+      "bets": [],
+      "resolvedAt": "2026-05-26T20:55:14.552Z"
+    },
+    {
+      "roundId": "round_european_1779828993339",
+      "boardType": "european",
+      "rngResult": 18,
+      "bets": [],
+      "resolvedAt": "2026-05-26T20:56:33.407Z"
+    },
+    {
+      "roundId": "round_mini_1779828993380",
+      "boardType": "mini",
+      "rngResult": 10,
+      "bets": [],
+      "resolvedAt": "2026-05-26T20:56:33.459Z"
+    },
+    {
+      "roundId": "round_european_1779829029623",
+      "boardType": "european",
+      "rngResult": 2,
+      "bets": [],
+      "resolvedAt": "2026-05-26T20:57:09.733Z"
+    },
+    {
+      "roundId": "round_mini_1779829029638",
+      "boardType": "mini",
+      "rngResult": 1,
+      "bets": [],
+      "resolvedAt": "2026-05-26T20:57:09.744Z"
+    },
+    {
+      "roundId": "round_european_1779829065901",
+      "boardType": "european",
+      "rngResult": 26,
+      "bets": [],
+      "resolvedAt": "2026-05-26T20:57:45.967Z"
+    },
+    {
+      "roundId": "round_mini_1779829065940",
+      "boardType": "mini",
+      "rngResult": 8,
+      "bets": [],
+      "resolvedAt": "2026-05-26T20:57:46.027Z"
+    },
+    {
+      "roundId": "round_european_1779829102295",
+      "boardType": "european",
+      "rngResult": 2,
+      "bets": [],
+      "resolvedAt": "2026-05-26T20:58:22.346Z"
+    },
+    {
+      "roundId": "round_mini_1779829102339",
+      "boardType": "mini",
+      "rngResult": 10,
+      "bets": [],
+      "resolvedAt": "2026-05-26T20:58:22.356Z"
+    },
+    {
+      "roundId": "round_european_1779829138568",
+      "boardType": "european",
+      "rngResult": 9,
+      "bets": [],
+      "resolvedAt": "2026-05-26T20:58:58.612Z"
+    },
+    {
+      "roundId": "round_mini_1779829138580",
+      "boardType": "mini",
+      "rngResult": 0,
+      "bets": [],
+      "resolvedAt": "2026-05-26T20:58:58.771Z"
+    },
+    {
+      "roundId": "round_european_1779829174883",
+      "boardType": "european",
+      "rngResult": 2,
+      "bets": [],
+      "resolvedAt": "2026-05-26T20:59:34.978Z"
+    },
+    {
+      "roundId": "round_mini_1779829174936",
+      "boardType": "mini",
+      "rngResult": 9,
+      "bets": [],
+      "resolvedAt": "2026-05-26T20:59:34.996Z"
+    },
+    {
+      "roundId": "round_european_1779829211205",
+      "boardType": "european",
+      "rngResult": 12,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:00:11.311Z"
+    },
+    {
+      "roundId": "round_mini_1779829211240",
+      "boardType": "mini",
+      "rngResult": 6,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:00:11.328Z"
+    },
+    {
+      "roundId": "round_european_1779829247491",
+      "boardType": "european",
+      "rngResult": 10,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:00:47.528Z"
+    },
+    {
+      "roundId": "round_mini_1779829247524",
+      "boardType": "mini",
+      "rngResult": 5,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:00:47.534Z"
+    },
+    {
+      "roundId": "round_european_1779829282754",
+      "boardType": "european",
+      "rngResult": 2,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:01:22.781Z"
+    },
+    {
+      "roundId": "round_mini_1779829282776",
+      "boardType": "mini",
+      "rngResult": 1,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:01:22.787Z"
+    },
+    {
+      "roundId": "round_european_1779829318067",
+      "boardType": "european",
+      "rngResult": 35,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:01:58.132Z"
+    },
+    {
+      "roundId": "round_mini_1779829318104",
+      "boardType": "mini",
+      "rngResult": 1,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:01:58.147Z"
+    },
+    {
+      "roundId": "round_european_1779829354446",
+      "boardType": "european",
+      "rngResult": 33,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:02:34.594Z"
+    },
+    {
+      "roundId": "round_mini_1779829354545",
+      "boardType": "mini",
+      "rngResult": 6,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:02:34.601Z"
+    },
+    {
+      "roundId": "round_european_1779829391035",
+      "boardType": "european",
+      "rngResult": 32,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:03:11.058Z"
+    },
+    {
+      "roundId": "round_mini_1779829391044",
+      "boardType": "mini",
+      "rngResult": 10,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:03:11.061Z"
+    },
+    {
+      "roundId": "round_european_1779829427252",
+      "boardType": "european",
+      "rngResult": 0,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:03:47.343Z"
+    },
+    {
+      "roundId": "round_mini_1779829427282",
+      "boardType": "mini",
+      "rngResult": 0,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:03:47.367Z"
+    },
+    {
+      "roundId": "round_european_1779829462836",
+      "boardType": "european",
+      "rngResult": 14,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:04:22.891Z"
+    },
+    {
+      "roundId": "round_mini_1779829462871",
+      "boardType": "mini",
+      "rngResult": 1,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:04:22.894Z"
+    },
+    {
+      "roundId": "round_european_1779829499102",
+      "boardType": "european",
+      "rngResult": 32,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:04:59.142Z"
+    },
+    {
+      "roundId": "round_mini_1779829499121",
+      "boardType": "mini",
+      "rngResult": 9,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:04:59.148Z"
+    },
+    {
+      "roundId": "round_european_1779829535397",
+      "boardType": "european",
+      "rngResult": 1,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:05:35.428Z"
+    },
+    {
+      "roundId": "round_mini_1779829535415",
+      "boardType": "mini",
+      "rngResult": 1,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:05:35.434Z"
+    },
+    {
+      "roundId": "round_european_1779829571785",
+      "boardType": "european",
+      "rngResult": 13,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:06:11.826Z"
+    },
+    {
+      "roundId": "round_mini_1779829571821",
+      "boardType": "mini",
+      "rngResult": 9,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:06:11.830Z"
+    },
+    {
+      "roundId": "round_european_1779829608024",
+      "boardType": "european",
+      "rngResult": 21,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:06:48.140Z"
+    },
+    {
+      "roundId": "round_mini_1779829608058",
+      "boardType": "mini",
+      "rngResult": 4,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:06:48.165Z"
+    },
+    {
+      "roundId": "round_european_1779829644311",
+      "boardType": "european",
+      "rngResult": 14,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:07:24.407Z"
+    },
+    {
+      "roundId": "round_mini_1779829644358",
+      "boardType": "mini",
+      "rngResult": 9,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:07:24.423Z"
+    },
+    {
+      "roundId": "round_european_1779829680689",
+      "boardType": "european",
+      "rngResult": 0,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:08:00.796Z"
+    },
+    {
+      "roundId": "round_mini_1779829680756",
+      "boardType": "mini",
+      "rngResult": 6,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:08:00.826Z"
+    },
+    {
+      "roundId": "round_european_1779829717039",
+      "boardType": "european",
+      "rngResult": 32,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:08:37.149Z"
+    },
+    {
+      "roundId": "round_mini_1779829717080",
+      "boardType": "mini",
+      "rngResult": 1,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:08:37.164Z"
+    },
+    {
+      "roundId": "round_european_1779829753307",
+      "boardType": "european",
+      "rngResult": 17,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:09:13.334Z"
+    },
+    {
+      "roundId": "round_mini_1779829753325",
+      "boardType": "mini",
+      "rngResult": 4,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:09:13.339Z"
+    },
+    {
+      "roundId": "round_european_1779829789575",
+      "boardType": "european",
+      "rngResult": 3,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:09:49.724Z"
+    },
+    {
+      "roundId": "round_mini_1779829789660",
+      "boardType": "mini",
+      "rngResult": 5,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:09:49.740Z"
+    },
+    {
+      "roundId": "round_european_1779829825897",
+      "boardType": "european",
+      "rngResult": 11,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:10:26.045Z"
+    },
+    {
+      "roundId": "round_mini_1779829825929",
+      "boardType": "mini",
+      "rngResult": 9,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:10:26.082Z"
+    },
+    {
+      "roundId": "round_european_1779829862108",
+      "boardType": "european",
+      "rngResult": 24,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:11:02.158Z"
+    },
+    {
+      "roundId": "round_mini_1779829862141",
+      "boardType": "mini",
+      "rngResult": 10,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:11:02.178Z"
+    },
+    {
+      "roundId": "round_european_1779829898392",
+      "boardType": "european",
+      "rngResult": 31,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:11:38.423Z"
+    },
+    {
+      "roundId": "round_mini_1779829898409",
+      "boardType": "mini",
+      "rngResult": 7,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:11:38.427Z"
+    },
+    {
+      "roundId": "round_european_1779829933668",
+      "boardType": "european",
+      "rngResult": 8,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:12:13.728Z"
+    },
+    {
+      "roundId": "round_mini_1779829933712",
+      "boardType": "mini",
+      "rngResult": 4,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:12:13.741Z"
+    },
+    {
+      "roundId": "round_european_1779829969937",
+      "boardType": "european",
+      "rngResult": 6,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:12:50.022Z"
+    },
+    {
+      "roundId": "round_mini_1779829970010",
+      "boardType": "mini",
+      "rngResult": 8,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:12:50.029Z"
+    },
+    {
+      "roundId": "round_european_1779830006223",
+      "boardType": "european",
+      "rngResult": 4,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:13:26.347Z"
+    },
+    {
+      "roundId": "round_mini_1779830006280",
+      "boardType": "mini",
+      "rngResult": 3,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:13:26.363Z"
+    },
+    {
+      "roundId": "round_european_1779830042460",
+      "boardType": "european",
+      "rngResult": 22,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:14:02.494Z"
+    },
+    {
+      "roundId": "round_mini_1779830042490",
+      "boardType": "mini",
+      "rngResult": 10,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:14:02.498Z"
+    },
+    {
+      "roundId": "round_european_1779830078730",
+      "boardType": "european",
+      "rngResult": 15,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:14:38.909Z"
+    },
+    {
+      "roundId": "round_mini_1779830078873",
+      "boardType": "mini",
+      "rngResult": 11,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:14:38.925Z"
+    },
+    {
+      "roundId": "round_european_1779830115088",
+      "boardType": "european",
+      "rngResult": 18,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:15:15.131Z"
+    },
+    {
+      "roundId": "round_mini_1779830115116",
+      "boardType": "mini",
+      "rngResult": 10,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:15:15.135Z"
+    },
+    {
+      "roundId": "round_european_1779830151405",
+      "boardType": "european",
+      "rngResult": 35,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:15:51.428Z"
+    },
+    {
+      "roundId": "round_mini_1779830151417",
+      "boardType": "mini",
+      "rngResult": 6,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:15:51.433Z"
+    },
+    {
+      "roundId": "round_european_1779830187648",
+      "boardType": "european",
+      "rngResult": 35,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:16:27.819Z"
+    },
+    {
+      "roundId": "round_mini_1779830187706",
+      "boardType": "mini",
+      "rngResult": 8,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:16:27.835Z"
+    },
+    {
+      "roundId": "round_european_1779830223994",
+      "boardType": "european",
+      "rngResult": 1,
+      "bets": [
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 2,
+          "amount": 10,
+          "boardType": "european"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 10,
+          "amount": 10,
+          "boardType": "european"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 22,
+          "amount": 10,
+          "boardType": "european"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 20,
+          "amount": 10,
+          "boardType": "european"
+        }
+      ],
+      "resolvedAt": "2026-05-26T21:17:04.042Z"
+    },
+    {
+      "roundId": "round_mini_1779830224025",
+      "boardType": "mini",
+      "rngResult": 9,
+      "bets": [
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 0,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 1,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 2,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 3,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 7,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 6,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 5,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 4,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 8,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 9,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 10,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 11,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 12,
+          "amount": 10,
+          "boardType": "mini"
+        }
+      ],
+      "resolvedAt": "2026-05-26T21:17:04.058Z"
+    },
+    {
+      "roundId": "round_european_1779830260352",
+      "boardType": "european",
+      "rngResult": 1,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:17:40.379Z"
+    },
+    {
+      "roundId": "round_mini_1779830260368",
+      "boardType": "mini",
+      "rngResult": 0,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:17:40.390Z"
+    },
+    {
+      "roundId": "round_european_1779830296626",
+      "boardType": "european",
+      "rngResult": 13,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:18:16.656Z"
+    },
+    {
+      "roundId": "round_mini_1779830296643",
+      "boardType": "mini",
+      "rngResult": 4,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:18:16.659Z"
+    },
+    {
+      "roundId": "round_european_1779830332006",
+      "boardType": "european",
+      "rngResult": 10,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:18:52.039Z"
+    },
+    {
+      "roundId": "round_mini_1779830332027",
+      "boardType": "mini",
+      "rngResult": 1,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:18:52.044Z"
+    },
+    {
+      "roundId": "round_european_1779830367287",
+      "boardType": "european",
+      "rngResult": 36,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:19:27.327Z"
+    },
+    {
+      "roundId": "round_mini_1779830367304",
+      "boardType": "mini",
+      "rngResult": 9,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:19:27.334Z"
+    },
+    {
+      "roundId": "round_european_1779830403557",
+      "boardType": "european",
+      "rngResult": 6,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:20:03.656Z"
+    },
+    {
+      "roundId": "round_mini_1779830403610",
+      "boardType": "mini",
+      "rngResult": 5,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:20:03.666Z"
+    },
+    {
+      "roundId": "round_european_1779830443976",
+      "boardType": "european",
+      "rngResult": 18,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:20:44.027Z"
+    },
+    {
+      "roundId": "round_mini_1779830443997",
+      "boardType": "mini",
+      "rngResult": 5,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:20:44.036Z"
+    },
+    {
+      "roundId": "round_european_1779830493860",
+      "boardType": "european",
+      "rngResult": 12,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:21:33.889Z"
+    },
+    {
+      "roundId": "round_mini_1779830493877",
+      "boardType": "mini",
+      "rngResult": 4,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:21:33.893Z"
+    },
+    {
+      "roundId": "round_european_1779830530176",
+      "boardType": "european",
+      "rngResult": 21,
+      "bets": [
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 2,
+          "amount": 10,
+          "boardType": "european"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 14,
+          "amount": 10,
+          "boardType": "european"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 22,
+          "amount": 10,
+          "boardType": "european"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 26,
+          "amount": 10,
+          "boardType": "european"
+        }
+      ],
+      "resolvedAt": "2026-05-26T21:22:10.209Z"
+    },
+    {
+      "roundId": "round_mini_1779830530192",
+      "boardType": "mini",
+      "rngResult": 1,
+      "bets": [
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 0,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 1,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 2,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 3,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 7,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 6,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 5,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 4,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 8,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 9,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 10,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 11,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 12,
+          "amount": 10,
+          "boardType": "mini"
+        }
+      ],
+      "resolvedAt": "2026-05-26T21:22:10.229Z"
+    },
+    {
+      "roundId": "round_european_1779830566457",
+      "boardType": "european",
+      "rngResult": 0,
+      "bets": [
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 8,
+          "amount": 10,
+          "boardType": "european"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 15,
+          "amount": 10,
+          "boardType": "european"
+        }
+      ],
+      "resolvedAt": "2026-05-26T21:22:46.564Z"
+    },
+    {
+      "roundId": "round_mini_1779830566474",
+      "boardType": "mini",
+      "rngResult": 8,
+      "bets": [
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 0,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 1,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 2,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 3,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 4,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 5,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 6,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 7,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 8,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 9,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 10,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 11,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 12,
+          "amount": 10,
+          "boardType": "mini"
+        }
+      ],
+      "resolvedAt": "2026-05-26T21:22:46.608Z"
+    },
+    {
+      "roundId": "round_european_1779830602707",
+      "boardType": "european",
+      "rngResult": 31,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:23:22.832Z"
+    },
+    {
+      "roundId": "round_mini_1779830602733",
+      "boardType": "mini",
+      "rngResult": 11,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:23:22.857Z"
+    },
+    {
+      "roundId": "round_european_1779830638955",
+      "boardType": "european",
+      "rngResult": 11,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:23:58.993Z"
+    },
+    {
+      "roundId": "round_mini_1779830638960",
+      "boardType": "mini",
+      "rngResult": 2,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:23:58.997Z"
+    },
+    {
+      "roundId": "round_european_1779830675248",
+      "boardType": "european",
+      "rngResult": 14,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:24:35.297Z"
+    },
+    {
+      "roundId": "round_mini_1779830675276",
+      "boardType": "mini",
+      "rngResult": 11,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:24:35.311Z"
+    },
+    {
+      "roundId": "round_european_1779830711589",
+      "boardType": "european",
+      "rngResult": 3,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:25:11.669Z"
+    },
+    {
+      "roundId": "round_mini_1779830711602",
+      "boardType": "mini",
+      "rngResult": 5,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:25:11.678Z"
+    },
+    {
+      "roundId": "round_european_1779830757871",
+      "boardType": "european",
+      "rngResult": 19,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:25:57.898Z"
+    },
+    {
+      "roundId": "round_mini_1779830757885",
+      "boardType": "mini",
+      "rngResult": 0,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:25:57.902Z"
+    },
+    {
+      "roundId": "round_european_1779830790816",
+      "boardType": "european",
+      "rngResult": 29,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:26:30.938Z"
+    },
+    {
+      "roundId": "round_mini_1779830790851",
+      "boardType": "mini",
+      "rngResult": 3,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:26:30.974Z"
+    },
+    {
+      "roundId": "round_european_1779830827128",
+      "boardType": "european",
+      "rngResult": 1,
+      "bets": [
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 1,
+          "amount": 10,
+          "boardType": "european"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 21,
+          "amount": 10,
+          "boardType": "european"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 31,
+          "amount": 10,
+          "boardType": "european"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 36,
+          "amount": 10,
+          "boardType": "european"
+        }
+      ],
+      "resolvedAt": "2026-05-26T21:27:07.182Z"
+    },
+    {
+      "roundId": "round_mini_1779830827160",
+      "boardType": "mini",
+      "rngResult": 4,
+      "bets": [
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 0,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 1,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 2,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 3,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 4,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 5,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 6,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 7,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 8,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 9,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 10,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 11,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 12,
+          "amount": 10,
+          "boardType": "mini"
+        }
+      ],
+      "resolvedAt": "2026-05-26T21:27:07.187Z"
+    },
+    {
+      "roundId": "round_european_1779830863422",
+      "boardType": "european",
+      "rngResult": 21,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:27:43.461Z"
+    },
+    {
+      "roundId": "round_mini_1779830863447",
+      "boardType": "mini",
+      "rngResult": 12,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:27:43.464Z"
+    },
+    {
+      "roundId": "round_european_1779830899672",
+      "boardType": "european",
+      "rngResult": 25,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:28:19.694Z"
+    },
+    {
+      "roundId": "round_mini_1779830899681",
+      "boardType": "mini",
+      "rngResult": 5,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:28:19.698Z"
+    },
+    {
+      "roundId": "round_european_1779830935868",
+      "boardType": "european",
+      "rngResult": 35,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:28:55.949Z"
+    },
+    {
+      "roundId": "round_mini_1779830935895",
+      "boardType": "mini",
+      "rngResult": 6,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:28:55.964Z"
+    },
+    {
+      "roundId": "round_european_1779830972092",
+      "boardType": "european",
+      "rngResult": 7,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:29:32.131Z"
+    },
+    {
+      "roundId": "round_mini_1779830972122",
+      "boardType": "mini",
+      "rngResult": 0,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:29:32.137Z"
+    },
+    {
+      "roundId": "round_european_1779831025660",
+      "boardType": "european",
+      "rngResult": 30,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:30:25.689Z"
+    },
+    {
+      "roundId": "round_mini_1779831025678",
+      "boardType": "mini",
+      "rngResult": 11,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:30:25.698Z"
+    },
+    {
+      "roundId": "round_european_1779831094000",
+      "boardType": "european",
+      "rngResult": 5,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:31:34.084Z"
+    },
+    {
+      "roundId": "round_mini_1779831094012",
+      "boardType": "mini",
+      "rngResult": 4,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:31:34.092Z"
+    },
+    {
+      "roundId": "round_european_1779831130290",
+      "boardType": "european",
+      "rngResult": 6,
+      "bets": [
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 0,
+          "amount": 10,
+          "boardType": "european"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 27,
+          "amount": 10,
+          "boardType": "european"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 16,
+          "amount": 10,
+          "boardType": "european"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 19,
+          "amount": 10,
+          "boardType": "european"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 35,
+          "amount": 10,
+          "boardType": "european"
+        }
+      ],
+      "resolvedAt": "2026-05-26T21:32:10.329Z"
+    },
+    {
+      "roundId": "round_mini_1779831130313",
+      "boardType": "mini",
+      "rngResult": 4,
+      "bets": [
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 0,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 1,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 2,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 3,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 7,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 6,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 5,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 4,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 8,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 9,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 10,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 11,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 12,
+          "amount": 10,
+          "boardType": "mini"
+        }
+      ],
+      "resolvedAt": "2026-05-26T21:32:10.344Z"
+    },
+    {
+      "roundId": "round_european_1779831166604",
+      "boardType": "european",
+      "rngResult": 16,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:32:46.668Z"
+    },
+    {
+      "roundId": "round_mini_1779831166624",
+      "boardType": "mini",
+      "rngResult": 1,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:32:46.716Z"
+    },
+    {
+      "roundId": "round_european_1779831202868",
+      "boardType": "european",
+      "rngResult": 36,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:33:23.006Z"
+    },
+    {
+      "roundId": "round_mini_1779831202916",
+      "boardType": "mini",
+      "rngResult": 5,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:33:23.026Z"
+    },
+    {
+      "roundId": "round_european_1779831239170",
+      "boardType": "european",
+      "rngResult": 36,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:33:59.193Z"
+    },
+    {
+      "roundId": "round_mini_1779831239181",
+      "boardType": "mini",
+      "rngResult": 5,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:33:59.196Z"
+    },
+    {
+      "roundId": "round_european_1779831287246",
+      "boardType": "european",
+      "rngResult": 1,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:34:47.372Z"
+    },
+    {
+      "roundId": "round_mini_1779831287271",
+      "boardType": "mini",
+      "rngResult": 10,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:34:47.397Z"
+    },
+    {
+      "roundId": "round_european_1779831323678",
+      "boardType": "european",
+      "rngResult": 7,
+      "bets": [
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 7,
+          "amount": 10,
+          "boardType": "european"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 15,
+          "amount": 10,
+          "boardType": "european"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 20,
+          "amount": 10,
+          "boardType": "european"
+        }
+      ],
+      "resolvedAt": "2026-05-26T21:35:23.881Z"
+    },
+    {
+      "roundId": "round_mini_1779831323701",
+      "boardType": "mini",
+      "rngResult": 3,
+      "bets": [
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 0,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 1,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 2,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 3,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 4,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 5,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 6,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 7,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 8,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 9,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 10,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 11,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 12,
+          "amount": 10,
+          "boardType": "mini"
+        }
+      ],
+      "resolvedAt": "2026-05-26T21:35:23.885Z"
+    },
+    {
+      "roundId": "round_european_1779831360098",
+      "boardType": "european",
+      "rngResult": 22,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:36:00.154Z"
+    },
+    {
+      "roundId": "round_mini_1779831360120",
+      "boardType": "mini",
+      "rngResult": 5,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:36:00.206Z"
+    },
+    {
+      "roundId": "round_european_1779831396429",
+      "boardType": "european",
+      "rngResult": 0,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:36:36.522Z"
+    },
+    {
+      "roundId": "round_mini_1779831396484",
+      "boardType": "mini",
+      "rngResult": 4,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:36:36.533Z"
+    },
+    {
+      "roundId": "round_european_1779831432732",
+      "boardType": "european",
+      "rngResult": 7,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:37:12.852Z"
+    },
+    {
+      "roundId": "round_mini_1779831432757",
+      "boardType": "mini",
+      "rngResult": 1,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:37:12.865Z"
+    },
+    {
+      "roundId": "round_european_1779831469058",
+      "boardType": "european",
+      "rngResult": 9,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:37:49.099Z"
+    },
+    {
+      "roundId": "round_mini_1779831469068",
+      "boardType": "mini",
+      "rngResult": 4,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:37:49.105Z"
+    },
+    {
+      "roundId": "round_european_1779831505329",
+      "boardType": "european",
+      "rngResult": 32,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:38:25.433Z"
+    },
+    {
+      "roundId": "round_mini_1779831505363",
+      "boardType": "mini",
+      "rngResult": 6,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:38:25.448Z"
+    },
+    {
+      "roundId": "round_european_1779831541530",
+      "boardType": "european",
+      "rngResult": 30,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:39:01.583Z"
+    },
+    {
+      "roundId": "round_mini_1779831541562",
+      "boardType": "mini",
+      "rngResult": 11,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:39:01.588Z"
+    },
+    {
+      "roundId": "round_european_1779831576893",
+      "boardType": "european",
+      "rngResult": 10,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:39:36.917Z"
+    },
+    {
+      "roundId": "round_mini_1779831576909",
+      "boardType": "mini",
+      "rngResult": 7,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:39:36.920Z"
+    },
+    {
+      "roundId": "round_european_1779831613164",
+      "boardType": "european",
+      "rngResult": 26,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:40:13.198Z"
+    },
+    {
+      "roundId": "round_mini_1779831613186",
+      "boardType": "mini",
+      "rngResult": 1,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:40:13.201Z"
+    },
+    {
+      "roundId": "round_european_1779831649444",
+      "boardType": "european",
+      "rngResult": 17,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:40:49.482Z"
+    },
+    {
+      "roundId": "round_mini_1779831649472",
+      "boardType": "mini",
+      "rngResult": 9,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:40:49.487Z"
+    },
+    {
+      "roundId": "round_european_1779831685826",
+      "boardType": "european",
+      "rngResult": 26,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:41:25.856Z"
+    },
+    {
+      "roundId": "round_mini_1779831685843",
+      "boardType": "mini",
+      "rngResult": 8,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:41:25.866Z"
+    },
+    {
+      "roundId": "round_european_1779831722080",
+      "boardType": "european",
+      "rngResult": 27,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:42:02.123Z"
+    },
+    {
+      "roundId": "round_mini_1779831722098",
+      "boardType": "mini",
+      "rngResult": 10,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:42:02.130Z"
+    },
+    {
+      "roundId": "round_european_1779831757411",
+      "boardType": "european",
+      "rngResult": 22,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:42:37.457Z"
+    },
+    {
+      "roundId": "round_mini_1779831757445",
+      "boardType": "mini",
+      "rngResult": 6,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:42:37.463Z"
+    },
+    {
+      "roundId": "round_european_1779831793663",
+      "boardType": "european",
+      "rngResult": 1,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:43:13.706Z"
+    },
+    {
+      "roundId": "round_mini_1779831793686",
+      "boardType": "mini",
+      "rngResult": 4,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:43:13.717Z"
+    },
+    {
+      "roundId": "round_european_1779831829931",
+      "boardType": "european",
+      "rngResult": 14,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:43:49.957Z"
+    },
+    {
+      "roundId": "round_mini_1779831829950",
+      "boardType": "mini",
+      "rngResult": 7,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:43:49.960Z"
+    },
+    {
+      "roundId": "round_european_1779831866255",
+      "boardType": "european",
+      "rngResult": 9,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:44:26.299Z"
+    },
+    {
+      "roundId": "round_mini_1779831866291",
+      "boardType": "mini",
+      "rngResult": 11,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:44:26.302Z"
+    },
+    {
+      "roundId": "round_european_1779831902498",
+      "boardType": "european",
+      "rngResult": 17,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:45:02.522Z"
+    },
+    {
+      "roundId": "round_mini_1779831902515",
+      "boardType": "mini",
+      "rngResult": 0,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:45:02.526Z"
+    },
+    {
+      "roundId": "round_european_1779831937845",
+      "boardType": "european",
+      "rngResult": 11,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:45:37.888Z"
+    },
+    {
+      "roundId": "round_mini_1779831937870",
+      "boardType": "mini",
+      "rngResult": 3,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:45:37.912Z"
+    },
+    {
+      "roundId": "round_european_1779831974183",
+      "boardType": "european",
+      "rngResult": 10,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:46:14.232Z"
+    },
+    {
+      "roundId": "round_mini_1779831974203",
+      "boardType": "mini",
+      "rngResult": 3,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:46:14.249Z"
+    },
+    {
+      "roundId": "round_european_1779832009777",
+      "boardType": "european",
+      "rngResult": 11,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:46:49.795Z"
+    },
+    {
+      "roundId": "round_mini_1779832009789",
+      "boardType": "mini",
+      "rngResult": 11,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:46:49.798Z"
+    },
+    {
+      "roundId": "round_european_1779832046067",
+      "boardType": "european",
+      "rngResult": 35,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:47:26.185Z"
+    },
+    {
+      "roundId": "round_mini_1779832046092",
+      "boardType": "mini",
+      "rngResult": 0,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:47:26.213Z"
+    },
+    {
+      "roundId": "round_european_1779832082368",
+      "boardType": "european",
+      "rngResult": 13,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:48:02.453Z"
+    },
+    {
+      "roundId": "round_mini_1779832082389",
+      "boardType": "mini",
+      "rngResult": 7,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:48:02.469Z"
+    },
+    {
+      "roundId": "round_european_1779832118635",
+      "boardType": "european",
+      "rngResult": 24,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:48:38.667Z"
+    },
+    {
+      "roundId": "round_mini_1779832118657",
+      "boardType": "mini",
+      "rngResult": 0,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:48:38.672Z"
+    },
+    {
+      "roundId": "round_european_1779832154895",
+      "boardType": "european",
+      "rngResult": 24,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:49:14.931Z"
+    },
+    {
+      "roundId": "round_mini_1779832154906",
+      "boardType": "mini",
+      "rngResult": 6,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:49:14.936Z"
+    },
+    {
+      "roundId": "round_european_1779832191153",
+      "boardType": "european",
+      "rngResult": 28,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:49:51.202Z"
+    },
+    {
+      "roundId": "round_mini_1779832191185",
+      "boardType": "mini",
+      "rngResult": 9,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:49:51.206Z"
+    },
+    {
+      "roundId": "round_european_1779832227378",
+      "boardType": "european",
+      "rngResult": 27,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:50:27.404Z"
+    },
+    {
+      "roundId": "round_mini_1779832227392",
+      "boardType": "mini",
+      "rngResult": 12,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:50:27.408Z"
+    },
+    {
+      "roundId": "round_european_1779832266037",
+      "boardType": "european",
+      "rngResult": 27,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:51:06.070Z"
+    },
+    {
+      "roundId": "round_mini_1779832266057",
+      "boardType": "mini",
+      "rngResult": 2,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:51:06.075Z"
+    },
+    {
+      "roundId": "round_european_1779832302353",
+      "boardType": "european",
+      "rngResult": 24,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:51:42.445Z"
+    },
+    {
+      "roundId": "round_mini_1779832302391",
+      "boardType": "mini",
+      "rngResult": 6,
+      "bets": [],
+      "resolvedAt": "2026-05-26T21:51:42.498Z"
+    },
+    {
+      "roundId": "round_european_1779832338635",
+      "boardType": "european",
+      "rngResult": 0,
+      "bets": [
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 1,
+          "amount": 10,
+          "boardType": "european"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 15,
+          "amount": 10,
+          "boardType": "european"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 26,
+          "amount": 10,
+          "boardType": "european"
+        },
+        {
+          "userId": "rob_1779807814851",
+          "password": "$2b$10$kCJrkB/8RuaK686RUOOn0O0qQ6bQxv.PxlZw6o2cf1a87d4Ko/GPy",
+          "number": 34,
+          "amount": 10,
+          "boardType": "european"
+        }
+      ],
+      "resolvedAt": "2026-05-26T21:52:18.759Z"
+    },
+    {
+      "roundId": "round_mini_1779832338659",
+      "boardType": "mini",
+      "rngResult": 12,
+      "bets": [
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 0,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 1,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 2,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 3,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 4,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 5,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 6,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 7,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 8,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 9,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 10,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 11,
+          "amount": 10,
+          "boardType": "mini"
+        },
+        {
+          "userId": "ro2_1779807955403",
+          "password": "$2b$10$cI3XddcpEqoq3QpncZDM..ZpsDgcGgT8j/OQj.9saiufqhtrrETwK",
+          "number": 12,
+          "amount": 10,
+          "boardType": "mini"
+        }
+      ],
+      "resolvedAt": "2026-05-26T21:52:18.852Z"
     }
   ]
 }

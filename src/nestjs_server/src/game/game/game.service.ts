@@ -21,18 +21,30 @@ export class GameService implements OnModuleInit {
 
   // Main data storage for the game (The Blackboard)
   private state: GameState = {
-    rngResult: null,
-    tableState: [],
-    users: {},
-    isBettingOpen: true,
     timeLeft: 30,
-
+    users: {},
+    boards: {
+      european: {
+        rngResult: null,
+        tableState: [],
+        isBettingOpen: true,
+        board: {
+          type: 'european',
+          numbers: Array.from({ length: 37 }, (_, i) => i),
+        },
+      },
+      mini: {
+        rngResult: null,
+        tableState: [],
+        isBettingOpen: true,
+        board: {
+          type: 'mini',
+          numbers: Array.from({ length: 13 }, (_, i) => i),
+        },
+      },
+    }
     // Legacy board kept for compatibility.
     // The real business logic now uses Bet.boardType and User.boardType.
-    board: {
-      type: 'european',
-      numbers: Array.from({ length: 37 }, (_, i) => i),
-    },
   };
 
   public socketServer!: Server;
@@ -60,19 +72,39 @@ export class GameService implements OnModuleInit {
       );
       await this.applyPayouts(unresolved);
       await this.userRepo.markRoundResolved(unresolved.roundId);
+      if (unresolved.boardType) {
+        setTimeout(() => this.reset(unresolved.boardType), 0);
+      }
     }
   }
   // Start the game
   startGameLoop() {
     setInterval(() => {
-      if (this.state.timeLeft > 0 && this.state.isBettingOpen) {
+      const anyOpen = Object.values(this.state.boards).some(b => b.isBettingOpen);
+
+      if (this.state.timeLeft > 0 && anyOpen) {
         // Decrease time every second
         this.state.timeLeft--;
         // Update all players with the new time
         this.socketServer.emit(GAME_EVENTS.STATE_UPDATE, encryptPayload(this.getState()));
-      } else if (this.state.timeLeft === 0 && this.state.isBettingOpen) {
-        // Time is up! Close bets and spin
-        this.handleSpinAction();
+      } else if (this.state.timeLeft === 0 && anyOpen) {
+
+        const spinPromises = (['european', 'mini'] as BoardType[])
+          .filter(boardType => this.state.boards[boardType].isBettingOpen)
+          .map(boardType => this._spinBoard(boardType));
+
+        void Promise.all(spinPromises).then(results => {
+          // Émettre un seul événement RESULT groupé avec tous les résultats
+          this.socketServer.emit(GAME_EVENTS.RESULT, encryptPayload({
+            status: 'success',
+            results: results.map(r => ({
+              boardType: r.boardType,
+              winningNumber: r.winningNumber,
+              winners: r.winners,
+            })),
+            newState: this.getState(),
+          }));
+        });
       }
     }, 1000);
   }
@@ -163,6 +195,8 @@ export class GameService implements OnModuleInit {
     const dto = decryptPayload(encryptedData) as BetActionDto;
     let isOk = false;
 
+    const user = this.state.users[dto.userId];
+
     // Check if the number is valid for the selected board
     const isValidNumber = this.isValidNumberForBoard(dto.number, dto.boardType);
 
@@ -201,6 +235,12 @@ export class GameService implements OnModuleInit {
         };
     }
 
+    if (user) {
+      this.logger.log(
+        `BET ACTION | type=${dto.action} user=${user.name} balance=${user.balance}`,
+      );
+    }
+
     // If the action worked, send the new game state
     if (isOk) {
       this.socketServer.emit(GAME_EVENTS.STATE_UPDATE, encryptPayload(this.getState()));
@@ -215,22 +255,35 @@ export class GameService implements OnModuleInit {
   }
 
   // Process the spin result
-  async handleSpinAction(): Promise<SpinResponse> {
+  async handleSpinAction(encryptedData?: string): Promise<void | SpinResponse> {
+
+    if (!encryptedData) return;
+    const data = decryptPayload(encryptedData) as { boardType: BoardType };
+    if (data?.boardType) {
+      return this._spinBoard(data.boardType);
+    }
+  }
+
+  private async _spinBoard(boardType: BoardType): Promise<SpinResponse>{
+    // State based on the boardType
+    const boardState = this.state.boards[boardType];
+    this.logger.log(`SPIN | board=${boardType} bets=${boardState.tableState.length} numbers=${boardState.board.numbers.length}`);
     // Stop all betting before the spin
-    this.state.isBettingOpen = false;
+    boardState.isBettingOpen = false;
 
     // Get all available numbers from the current board
-    const availableNumbers = this.state.board.numbers;
+    const availableNumbers = boardState.board.numbers;
 
     // Pick a random number from the active board
-    this.state.rngResult =
+    boardState.rngResult =
         availableNumbers[Math.floor(Math.random() * availableNumbers.length)];
 
     // Save the current round state
     const snapshot: RoundSnapshot = {
-      roundId: `round_${Date.now()}`,
-      rngResult: this.state.rngResult,
-      bets: [...this.state.tableState],
+      roundId: `round_${boardType}_${Date.now()}`,
+      boardType,
+      rngResult: boardState.rngResult,
+      bets: [...boardState.tableState],
       resolvedAt: null,
     };
 
@@ -243,24 +296,18 @@ export class GameService implements OnModuleInit {
     // Mark round as resolved
     await this.userRepo.markRoundResolved(snapshot.roundId);
 
-    // Get updated game state
-    const state = this.getState();
-
     // Build response for frontend
-    const response: SpinResponse = {
+    this.socketServer.emit(GAME_EVENTS.STATE_UPDATE, encryptPayload(this.getState()));
+
+    setTimeout(() => this.reset(boardType), 5000);
+
+    return {
       status: 'success',
-      winningNumber: state.rngResult,
+      boardType,
+      winningNumber: boardState.rngResult,
       winners,
-      newState: state,
+      newState: this.getState(),
     };
-
-    // Send the result to all players
-    this.socketServer.emit(GAME_EVENTS.RESULT, encryptPayload(response));
-
-    // Wait 5 seconds before starting a new round
-    setTimeout(() => this.reset(), 5000);
-
-    return response;
   }
 
 
@@ -305,11 +352,13 @@ export class GameService implements OnModuleInit {
       boardType: BoardType,
   ): boolean {
     const user = this.state.users[userId];
+    const boardState = this.state.boards[boardType];
+    this.logger.log(`PLACE BET | boardType=${boardType} boardState.isBettingOpen=${boardState.isBettingOpen}`);
 
     // Refuse invalid amounts
     if (
         !user ||
-        !this.state.isBettingOpen ||
+        !boardState.isBettingOpen ||
         user.balance < amount ||
         amount <= 0
     ) {
@@ -326,17 +375,17 @@ export class GameService implements OnModuleInit {
       return false;
     }
 
-    const existingBetIndex = this.state.tableState.findIndex(
+    const existingBetIndex = boardState.tableState.findIndex(
         (b: Bet) =>
             b.userId === userId && b.number === num && b.boardType === boardType,
     );
 
     if (existingBetIndex > -1) {
       // ADD +10 (or amount) to the existing bet
-      this.state.tableState[existingBetIndex].amount += amount;
+      boardState.tableState[existingBetIndex].amount += amount;
     } else {
       // CREATE new bet on the table
-      this.state.tableState.push({
+      boardState.tableState.push({
         userId,
         password: user.password,
         number: num,
@@ -357,8 +406,9 @@ export class GameService implements OnModuleInit {
       boardType: BoardType,
   ): boolean {
     const user = this.state.users[userId];
+    const boardState = this.state.boards[boardType];
 
-    if (!user || !this.state.isBettingOpen || newAmount <= 0) {
+    if (!user || !boardState.isBettingOpen || newAmount <= 0) {
       return false;
     }
 
@@ -368,14 +418,14 @@ export class GameService implements OnModuleInit {
     }
 
     // Find old bet
-    const betIndex = this.state.tableState.findIndex(
+    const betIndex = boardState.tableState.findIndex(
         (b: Bet) =>
             b.userId === userId && b.number === num && b.boardType === boardType,
     );
 
     if (betIndex === -1) return false;
 
-    const existingBet = this.state.tableState[betIndex];
+    const existingBet = boardState.tableState[betIndex];
 
     // Modify amount
     const difference = newAmount - existingBet.amount;
@@ -393,8 +443,10 @@ export class GameService implements OnModuleInit {
   // DELETE bet
   removeBet(userId: string, num: number, boardType: BoardType): boolean {
     const user = this.state.users[userId];
+        const boardState = this.state.boards[boardType];
 
-    if (!user || !this.state.isBettingOpen) {
+
+    if (!user || !boardState.isBettingOpen) {
       return false;
     }
 
@@ -404,33 +456,38 @@ export class GameService implements OnModuleInit {
     }
 
     // Find bet
-    const betIndex = this.state.tableState.findIndex(
+    const betIndex = boardState.tableState.findIndex(
         (b: Bet) =>
             b.userId === userId && b.number === num && b.boardType === boardType,
     );
 
     if (betIndex === -1) return false;
 
-    const bet = this.state.tableState[betIndex];
+    const bet = boardState.tableState[betIndex];
 
     // Delete it
     user.balance += bet.amount;
-    this.state.tableState.splice(betIndex, 1);
+    boardState.tableState.splice(betIndex, 1);
 
     return true;
   }
 
+  
   // Change the current roulette board
   changeBoard(encryptedData: string): GameState {
-    const data = decryptPayload(encryptedData) as { type: 'european' | 'mini' };
-    const type = data.type;
+    const data = decryptPayload(encryptedData) as {
+      boardType: BoardType;
+       type: 'european' | 'mini' 
+    };
+    const boardState = this.state.boards[data.boardType];
+
     // Prevent board changes during an active round
-    if (!this.state.isBettingOpen || this.state.tableState.length > 0) {
+    if (!boardState.isBettingOpen || boardState.tableState.length > 0) {
       return this.state;
     }
 
-    this.state.board =
-        type === 'mini'
+    boardState.board =
+        data.type === 'mini'
             ? {
               type: 'mini',
               numbers: Array.from({ length: 13 }, (_, i) => i),
@@ -445,6 +502,7 @@ export class GameService implements OnModuleInit {
 
     return this.state;
   }
+    
 
   // Apply the payout of a round based on the round snapshot
   private async applyPayouts(snapshot: RoundSnapshot): Promise<RoundWinner[]> {
@@ -463,6 +521,10 @@ export class GameService implements OnModuleInit {
 
         // Calculate player gain
         const gain = bet.amount * multiplier;
+
+         this.logger.log(
+          `WIN | user=${bet.userId} gain=${gain} case=${bet.number}`,
+        );
 
         // Player still connected
         if (user) {
@@ -504,20 +566,34 @@ export class GameService implements OnModuleInit {
       }
     }
 
+    for (const user of Object.values(this.state.users)) {
+      this.logger.log(`FINAL STATE | user=${user.name} balance=${user.balance}`);
+    }
+
     return winners;
   }
 
   // Reset the game for a new round
-  reset() {
-    this.state.rngResult = null;
-    this.state.tableState = [];
-    this.state.isBettingOpen = true;
-    this.state.timeLeft = this.ROUND_DURATION;
+  reset(boardType: BoardType) {
+    const boardState = this.state.boards[boardType];
+    boardState.rngResult = null;
+    boardState.tableState = [];
+    boardState.isBettingOpen = true;
 
     // Unlock players for the next round
     Object.values(this.state.users).forEach((user) => {
-      user.boardType = undefined;
+      if (user.boardType === boardType) {
+        user.boardType = undefined;
+      }
     });
+
+    // Reset timer when both board are reseted
+    const allReset = Object.values(this.state.boards).every(b => b.isBettingOpen);
+    if (allReset) {
+      this.state.timeLeft = this.ROUND_DURATION;
+    }
+
+    
 
     this.socketServer.emit(GAME_EVENTS.STATE_UPDATE, encryptPayload(this.getState()));
 

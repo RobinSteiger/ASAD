@@ -43,13 +43,15 @@ export class GameGateway implements OnGatewayInit {
   }
   // Spin the wheel
   @SubscribeMessage(GAME_EVENTS.SPIN)
-  handleSpin() {
-    return this.gameService.handleSpinAction();
+  handleSpin(@MessageBody() encryptedData: string) {
+    return this.gameService.handleSpinAction(encryptedData);
   }
 
+  
   // Handle board change requests
   @SubscribeMessage(GAME_EVENTS.CHANGE_BOARD)
   handleChangeBoard(@MessageBody() encryptedData: string) {
     return this.gameService.changeBoard(encryptedData);
   }
+    
 }

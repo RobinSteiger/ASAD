@@ -1,7 +1,21 @@
 import { signalStore, withState, withMethods, withComputed, patchState } from '@ngrx/signals';
 import { computed } from '@angular/core';
-import {GameState, RoundWinner, SpinResponse} from '../models/game-state.model';
+import {BoardState, GameState, RoundWinner, SpinResponse} from '../models/game-state.model';
 
+
+const europeanBoard: BoardState = {
+  rngResult: null,
+  tableState: [],
+  isBettingOpen: true,
+  board: { type: 'european', numbers: Array.from({ length: 37 }, (_, i) => i) },
+};
+
+const miniBoard: BoardState = {
+  rngResult: null,
+  tableState: [],
+  isBettingOpen: true,
+  board: { type: 'mini', numbers: Array.from({ length: 13 }, (_, i) => i) },
+};
 
 /** * Initial state of the game.
  * We add 'userId' to track the local player.
@@ -11,19 +25,18 @@ const initialState: GameState & {
   userId: string | null;
   lastWinners: RoundWinner[];
   showResultPopup: boolean;
+  lastRngResult: number | null;
 } = {
   users: {},
-  tableState: [],
-  isBettingOpen: true,
-  rngResult: null,
-  timeLeft: 15,
+  timeLeft: 30,
+  boards: {
+    european: europeanBoard,
+    mini: miniBoard
+  },
   userId: null,
   lastWinners: [], // Stores winners of the round
   showResultPopup: false, // Controls the visibility of the popup
-  board: {
-    type: 'european',
-    numbers: Array.from({ length: 37 }, (_, i) => i),
-  },
+  lastRngResult: null,
 };
 
 export const GameStore = signalStore(
@@ -50,7 +63,10 @@ export const GameStore = signalStore(
     // We can used  it to block the "Leave Table" action
     hasPlacedBet: computed(() => {
       const id = store.userId();
-      return store.tableState().some((bet) => bet.userId === id);
+      const boards = store.boards();
+      return Object.values(boards).some(b =>
+        b.tableState.some(bet => bet.userId === id)
+      );
     }),
 
     // Check if the user balance is 0 or less
@@ -62,6 +78,21 @@ export const GameStore = signalStore(
 
       return users[id].balance <= 0;
     }),
+
+    isBettingOpen: computed(() => {
+      const boards = store.boards();
+      return Object.values(boards).some(b => b.isBettingOpen);
+    }),
+
+    tableState: computed(() => {
+      const boards = store.boards();
+      return [
+        ...boards.european.tableState,
+        ...boards.mini.tableState,
+      ];
+    }),
+
+    rngResult: computed(() => store.lastRngResult()),
   })),
 
   // --- METHODS: How we update the central data ---
@@ -74,11 +105,8 @@ export const GameStore = signalStore(
       updateGameState(newState: GameState) {
         patchState(store, {
           users: newState.users,
-          tableState: newState.tableState,
-          isBettingOpen: newState.isBettingOpen,
-          rngResult: newState.rngResult,
           timeLeft: newState.timeLeft,
-          board: newState.board,
+          boards: newState.boards,
         });
       },
 
@@ -90,14 +118,19 @@ export const GameStore = signalStore(
         patchState(store, {
           lastWinners: data.winners ?? [],
           showResultPopup: true,
-          rngResult: data.winningNumber,
+          lastRngResult: data.winningNumber,
+          ...(data.newState ? {
+            users: data.newState.users,
+            timeLeft: data.newState.timeLeft,
+            boards: data.newState.boards,
+          } : {}),
         });
 
         // Wait 5 seconds, then hide the popup and reset the result
         setTimeout(() => {
           patchState(store, {
             showResultPopup: false,
-            rngResult: null,
+            lastRngResult: null,
           });
         }, 5000);
       },

@@ -1,4 +1,4 @@
-import {GameState, RoundWinner, User} from "../game/game.interface";
+import {BoardType, GameState, RoundWinner, User} from "../game/game.interface";
 
 export interface GameResponse {
   status: 'success' | 'error';
@@ -6,10 +6,17 @@ export interface GameResponse {
 }
 
 // Response for the Spin action
-export interface SpinResponse extends GameResponse {
-  winningNumber?: number | null;
-  winners?: RoundWinner[];
-  newState?: GameState;
+export interface SpinResponse {
+  status: 'success' | 'error';
+  boardType?: BoardType;
+  winningNumber: number | null;
+  winners: RoundWinner[];
+  newState: GameState;
+  results?: Array<{
+    boardType: BoardType;
+    winningNumber: number;
+    winners: RoundWinner[];
+  }>;
 }
 
 // Response for the Registration

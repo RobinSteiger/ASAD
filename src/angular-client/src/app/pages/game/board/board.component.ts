@@ -306,9 +306,9 @@ export class BoardComponent {
   editAmount = signal<number>(0);
   initialAmount = signal<number>(0);
   // Returns the numbers of the current board, except zero
-  numbers() {
+  /*numbers() {
     return this.store.board().numbers.filter(n => n !== 0);
-  }
+  }*/
 
   getNumberClass(n: number): string {
     const isRed = this.redNumbers.includes(n);

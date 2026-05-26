@@ -39,8 +39,24 @@ export class WebsocketService {
      */
     this.socket.on(GAME_EVENTS.RESULT, (encryptedData: string) => {
       const data = decryptPayload(encryptedData) as SpinResponse;
-      // We send the winners to the Store to show the Popup
-      this.store.setResult(data);
+
+      const allWinners = data.results?.flatMap(r => r.winners) ?? data.winners ?? [];
+
+      // Lire le boardType du joueur depuis users, pas depuis boards
+      const userId = this.store.userId();
+      const users = this.store.users();
+      const myBoardType: BoardType | undefined = userId ? users[userId]?.boardType : undefined;
+
+      const myResult = data.results?.find(r => r.boardType === myBoardType)
+        ?? data.results?.[0];
+
+      this.store.setResult({
+        status: data.status,
+        results: data.results ?? [],
+        winningNumber: myResult?.winningNumber ?? null,
+        winners: allWinners,
+        newState: data.newState,
+      });
     });
     // Handle server errors
     this.socket.on(GAME_EVENTS.ERROR, (error) => {

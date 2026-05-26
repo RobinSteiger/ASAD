@@ -28,20 +28,32 @@ export interface RoundWinner {
   boardType: BoardType;
 }
 
-export interface GameState {
-  users: Record<string, User>;
+export interface BoardState {
+  rngResult: number | null;
   tableState: Bet[];
   isBettingOpen: boolean;
-  rngResult: number | null;
+  board: BoardConfig;
+}
+
+export interface GameState {
+  users: Record<string, User>;
   timeLeft: number;
-  board: BoardConfig;  // Legacy global board kept for compatibility
+  boards: Record<BoardType, BoardState>;
 }
 
 export interface SpinResponse {
   status: 'success' | 'error';
-  winningNumber: number | null;
-  winners: RoundWinner[];
+  results: BoardResult[];
   newState: GameState;
+  winningNumber?: number | null;
+  winners?: RoundWinner[];
+  boardType?: BoardType;
+}
+
+export interface BoardResult {
+  boardType: BoardType;
+  winningNumber: number;
+  winners: RoundWinner[];
 }
 
 // Defines the numbers available for a roulette board
