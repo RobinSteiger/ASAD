@@ -592,9 +592,6 @@ export class GameService implements OnModuleInit {
     if (allReset) {
       this.state.timeLeft = this.ROUND_DURATION;
     }
-
-    
-
     this.socketServer.emit(GAME_EVENTS.STATE_UPDATE, encryptPayload(this.getState()));
 
     return this.state;
