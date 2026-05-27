@@ -235,12 +235,6 @@ export class GameService implements OnModuleInit {
         };
     }
 
-    if (user) {
-      this.logger.log(
-        `BET ACTION | type=${dto.action} user=${user.name} balance=${user.balance}`,
-      );
-    }
-
     // If the action worked, send the new game state
     if (isOk) {
       this.socketServer.emit(GAME_EVENTS.STATE_UPDATE, encryptPayload(this.getState()));
@@ -353,7 +347,7 @@ export class GameService implements OnModuleInit {
   ): boolean {
     const user = this.state.users[userId];
     const boardState = this.state.boards[boardType];
-    this.logger.log(`PLACE BET | boardType=${boardType} boardState.isBettingOpen=${boardState.isBettingOpen}`);
+    this.logger.log(`PLACE BET | user=${user.name} num=${num} amount=${amount} board=${boardType} balance=${user.balance}`);
 
     // Refuse invalid amounts
     if (
